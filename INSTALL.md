@@ -1,62 +1,74 @@
-# Installation for Quantum Resource Management Interface(QRMI)
+# Installation for Quantum Resource Management Interface (QRMI)
 
+## Table of Contents
+
+- [Installation for Quantum Resource Management Interface (QRMI)](#installation-for-quantum-resource-management-interface-qrmi)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Building Core QRMI Libraries](#building-core-qrmi-libraries)
+    - [How to Build Rust/C API Library](#how-to-build-rustc-api-library)
+    - [How to Build \& Install QRMI Python Package](#how-to-build--install-qrmi-python-package)
+      - [Setup Python virtual environment](#setup-python-virtual-environment)
+      - [Create stub file for python code](#create-stub-file-for-python-code)
+      - [Create a wheel for distribution](#create-a-wheel-for-distribution)
+  - [Building optional libraries](#building-optional-libraries)
+    - [How to build task\_runner for Rust version](#how-to-build-task_runner-for-rust-version)
+    - [How to run task\_runner for Python version](#how-to-run-task_runner-for-python-version)
+    - [How to build with Munge support for Pasqal Local](#how-to-build-with-munge-support-for-pasqal-local)
+  - [Other](#other)
+    - [Examples](#examples)
+    - [Logging](#logging)
+    - [API Docs](#api-docs)
+      - [How to generate Rust API document](#how-to-generate-rust-api-document)
+      - [How to generate Python API document](#how-to-generate-python-api-document)
+      - [How to generate C API document](#how-to-generate-c-api-document)
+        - [Generating API document](#generating-api-document)
+    - [Contributing](#contributing)
+    - [Solving linting/format issues](#solving-lintingformat-issues)
+      - [Rust code](#rust-code)
+      - [Python code](#python-code)
+  - [License](#license)
 
 ## Prerequisites
 
-* Compilation requires the following tools:
-  * Rust compiler 1.91 or above [Link](https://www.rust-lang.org/tools/install)
-  * A C compiler: for example, GCC(gcc) on Linux and Clang(clang-tools-extra) for Rust unknown targets/cross compilations. QRMI is compatible with a compiler conforming to the C11 standard.
-  * make/cmake (make/cmake RPM for RHEL compatible OS)
-  * Python 3.11, 3.12 or 3.13 (For Python API)
-    * Libraries and header files needed for Python development(python3.1x-devel RPM for RHEL compatible OS)
-      * /usr/include/python3.1x
-      * /usr/lib64/libpython3.1x.so
+- Compilation requires the following tools:
+  - [Rust compiler 1.91 or above](https://www.rust-lang.org/tools/install)
+  - A C compiler
+    - For example, GCC (gcc) on Linux and Clang (clang-tools-extra) for Rust unknown targets/cross compilations. QRMI is compatible with a compiler conforming to the C11 standard.
+  - make/cmake (make/cmake RPM for RHEL compatible OS)
+  - Python 3.11, 3.12 or 3.13 (For Python API)
+    - Libraries and header files needed for Python development(python3.1x-devel RPM for RHEL compatible OS)
+      - `/usr/include/python3.1x`
+      - `/usr/lib64/libpython3.1x.so`
 
-* Runtime requires the following tools:
-  * gcc (libgcc RPM for RHEL compatible OS)
-  * Python 3.11, 3.12 or 3.13 (For Python API)
-    * Libraries and header files needed for Python development(python3.1x-devel RPM for RHEL compatible OS)
+- Runtime requires the following tools:
+  - gcc (libgcc RPM for RHEL compatible OS)
+  - Python 3.11, 3.12 or 3.13 (for Python API)
+    - Libraries and header files needed for Python development (python3.1x-devel RPM for RHEL compatible OS)
 
-* Doxygen (for generating C API document)
-  * ```dnf install doxygen``` for Linux(RHEL/CentOS/Rocky Linux etc)
-  * ```apt install doxygen``` for Linux(Ubuntu etc.)
-  * ```brew install doxygen```for MacOS
+- Doxygen (for generating C API document)
+  - ```dnf install doxygen``` for Linux(RHEL/CentOS/Rocky Linux etc)
+  - ```apt install doxygen``` for Linux(Ubuntu etc.)
+  - ```brew install doxygen``` for MacOS
 
+## Building Core QRMI Libraries
 
-## 📋 Content
-
-- [🔶 Building core QRMI library](#building-core-qrmi-libraries)
-  - [🦀/©️ Rust and C](#how-to-build-rustc-api-library)
-  - [🐍 Python](#how-to-build--install-qrmi-python-package)
-- [🔸 Building optional libraries](#building-optional-libraries)
-  - [🏃 Building task runner CLI](#how-to-build-task_runner-for-rust-version)
-  - [🏃 Building task runner for Python](#how-to-run-task_runner-for-python-version)
-- [🔹 Other](#other)
-  - [📋 Examples](#examples)
-  - [📃 Logging](#logging)
-  - [📄 Generate API docs](#api-docs)
-    - [🦀 Rust API docs](#how-to-generate-rust-api-document)
-    - [🐍 Pythoni API docs](#how-to-generate-python-api-document)
-    - [©️ C API docs](#how-to-generate-c-api-document)
-  - [Contributing](#contributing)
-
-
-## Building core QRMI libraries
-
-Core QRMI is a set of libraries to control state of quantum resources. Written in Rust with C and Python API exposed for ease of integration to any compute infrastructure. 
+Core QRMI is a set of libraries to control the state of quantum resources. It is written in Rust with C and Python APIs exposed for ease of integration into any compute infrastructure.
 
 This section shows how to build QRMI for C and Python.
 
-### How to build Rust/C API library
+### How to Build Rust/C API Library
+
 ```shell-session
 . ~/.cargo/env
 cargo clean
 cargo build --locked --release
 ```
 
-### How to build & install QRMI Python package
+### How to Build & Install QRMI Python Package
 
 #### Setup Python virtual environment
+
 ```shell-session
 . ~/.cargo/env
 cargo clean
@@ -66,13 +78,12 @@ pip install --upgrade pip
 pip install -r requirements-dev.txt
 ```
 
-
 #### Create stub file for python code
+
 ```shell-session
 . ~/.cargo/env
 cargo run --bin stubgen --features=pyo3
 ```
-
 
 #### Create a wheel for distribution
 
@@ -82,6 +93,7 @@ CARGO_TARGET_DIR=./target/release/maturin maturin build --release
 ```
 
 For example,
+
 ```shell-session
 CARGO_TARGET_DIR=./target/release/maturin maturin build --release
 
@@ -104,13 +116,11 @@ source ~/py312_qrmi_venv/bin/activate
 pip install /shared/qrmi/target/release/maturin/wheels/wheels/qrmi-0.7.1-cp312-abi3-manylinux_2_34_aarch64.whl
 ```
 
-
 ## Building optional libraries
 
 Optional packages that are available in QRMI repository.
 
 `task_runner` is command line command to execute quantum payload againts quantum hardware. Under the hood it is using QRMI library.
-
 
 ### How to build task_runner for Rust version
 
@@ -122,8 +132,8 @@ Optional packages that are available in QRMI repository.
 cargo build --bin task_runner --release --features=build-binary
 ```
 
-
 ### How to run task_runner for Python version
+
 `task_runner` for Python version is already included in QRMI Python package. User can use task_runner command after installing qrmi. 
 For detailed instructions on how to use it, please refer to this [README](./python/qrmi/tools/task_runner/README.md).
 
@@ -147,20 +157,17 @@ CARGO_TARGET_DIR=./target/release/maturin maturin build --release --features pyo
 
 ## Other
 
-
 ### Examples
 
-* [Examples in Rust](./examples/qrmi/rust)
-* [Examples in Python](./examples/qrmi/python)
-* [Examples in C](./examples/qrmi/c)
-
+- [Examples in Rust](./examples/qrmi/rust)
+- [Examples in Python](./examples/qrmi/python)
+- [Examples in C](./examples/qrmi/c)
 
 ### Logging
 
 QRMI supports [log crate](https://crates.io/crates/log) for logging. You can find the detailed QRMI runtime logs by specifying `RUST_LOG` environment variable with log level. Supported levels are `error`, `warn`, `info`, `debug` and `trace`. Default level is `warn`. 
 
 If you specify `trace`, you can find underlying HTTP transaction logs.
-
 
 ```shell-session
 RUST_LOG=trace <your QRMI executable>
@@ -171,9 +178,7 @@ RUST_LOG=trace <your QRMI executable>
 [2025-08-16T03:47:38Z DEBUG direct_access_api::middleware::auth] current token ...
 ```
 
-
 ### API Docs
-
 
 #### How to generate Rust API document
 
@@ -181,7 +186,6 @@ RUST_LOG=trace <your QRMI executable>
 . ~/.cargo/env
 cargo doc --no-deps --open
 ```
-
 
 #### How to generate Python API document
 
@@ -196,37 +200,37 @@ server> b
 ```
 
 Open the following page in your browser.
+
 ```shell-session
 http://localhost:8290/qrmi.html 
 ```
 
 Quit server.
+
 ```shell-session
 server> q
 ```
 
-
 #### How to generate C API document
 
 ##### Generating API document
+
 ```shell-session
 doxygen Doxyfile
 ```
 
-HTML document will be created under `./html` directory. Open `html/index.html` in your web browser. 
-
+HTML document will be created under `./html` directory. Open `html/index.html` in your web browser.
 
 ### Contributing
 
 Regardless if you are part of the core team or an external contributor, welcome and thank you for contributing to QRMI implementations!
 
-
 ### Solving linting/format issues
 
 Contributor must execute the commands below and fix any issues before submitting Pull Request.
 
-
 #### Rust code
+
 ```shell-session
 $ . ~/.cargo/env
 $ cargo fmt --all -- --check
@@ -236,15 +240,14 @@ $ cargo fmt --all -- --check
 $ cargo clippy --all-targets -- -D warnings
 ```
 
-
 #### Python code
+
 ```shell-session
 $ source ~/py312_qrmi_venv/bin/activate
 $ cd examples
 $ pylint ./python
 $ black --check ./python
 ```
-
 
 ## License
 

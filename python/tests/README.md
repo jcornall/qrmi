@@ -1,6 +1,5 @@
 # Python Tests in QRMI
 
-
 ## Directory Structure
 
 All Python tests live under:
@@ -9,7 +8,7 @@ All Python tests live under:
 
 We separate unit and integration tests:
 
-```
+```shell-session
 python/
 ├── qrmi/
 │   └── ...
@@ -40,7 +39,7 @@ This allows:
 
 Example:
 
-Missing
+TBD
 
 ## Conventions
 

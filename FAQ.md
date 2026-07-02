@@ -2,9 +2,10 @@
 
 ## Table of Contents
 
-1. [General Question](#general-questions)
-2. [Job Execution Errors](#job-execution-errors)
-    1. [I get an error `error: spank_qrmi_c, failed to acquire resource: ibm_brisbane`](#i-get-an-error-error-spank_qrmi_c-failed-to-acquire-resource-ibm_brisbane)
+- [Frequently Asked Questions](#frequently-asked-questions)
+  - [Table of Contents](#table-of-contents)
+  - [Job Execution Errors](#job-execution-errors)
+    - [I get an error `error: spank_qrmi_c, failed to acquire resource: ibm_brisbane`](#i-get-an-error-error-spank_qrmi_c-failed-to-acquire-resource-ibm_brisbane)
 
 ## Job Execution Errors
 

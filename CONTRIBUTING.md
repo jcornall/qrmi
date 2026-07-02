@@ -4,29 +4,43 @@ QRMI is an open-source project committed to bringing quantum computing to
 people of all backgrounds. This page describes how you can join the QRMI
 community in this goal.
 
+## Table of Contents
 
-## Contents
-* [Before you start](#before-you-start)
-* [Set up Python virtual development environment](#set-up-python-virtual-development-environment)
-* [Installing QRMI from source](#installing-qrmi-from-source)
-* [Issues and pull requests](#issues-and-pull-requests)
-* [Contributor Licensing Agreement](#contributor-licensing-agreement)
-* [Testing](#testing)
-  * [Testing Python modules](#testing-python-modules)
-  * [Testing Rust components](#testing-rust-components)
-* [Style and Lint](#style-and-lint)
-* [Building API docs locally](#building-api-docs-locally)
-* [Updating files for new release](#updating-files-for-new-release)
-
+- [Contributing](#contributing)
+  - [Table of Contents](#table-of-contents)
+  - [Before you start](#before-you-start)
+  - [Set up Python virtual development environment](#set-up-python-virtual-development-environment)
+    - [Set up a Python venv](#set-up-a-python-venv)
+    - [Set up a Conda environment](#set-up-a-conda-environment)
+  - [Installing QRMI from source](#installing-qrmi-from-source)
+  - [Issues and pull requests](#issues-and-pull-requests)
+    - [Pull request checklist](#pull-request-checklist)
+    - [Pre-commit detect-secrets](#pre-commit-detect-secrets)
+    - [Code Review](#code-review)
+  - [Contributor Licensing Agreement](#contributor-licensing-agreement)
+  - [Testing](#testing)
+    - [Testing Python modules](#testing-python-modules)
+    - [Testing Rust components](#testing-rust-components)
+    - [Unsafe code and Miri](#unsafe-code-and-miri)
+    - [Testing the C API](#testing-the-c-api)
+      - [Writing C API tests](#writing-c-api-tests)
+  - [Style and lint](#style-and-lint)
+    - [Rust style and lint](#rust-style-and-lint)
+    - [C style and lint](#c-style-and-lint)
+  - [Building API docs locally](#building-api-docs-locally)
+    - [Prerequisites](#prerequisites)
+    - [How to generate Rust API document](#how-to-generate-rust-api-document)
+    - [How to generate Python API document](#how-to-generate-python-api-document)
+    - [How to generate C API document](#how-to-generate-c-api-document)
+  - [Updating files for new release](#updating-files-for-new-release)
 
 ## Before you start
 
 If you are new to Qiskit contributing we recommend you do the following before diving into the code:
 
-* Read the [Code of Conduct](https://github.com/qiskit-community/qrmi/blob/main/CODE_OF_CONDUCT.md)
-* Familiarize yourself with the Qiskit community (via [Slack](https://qisk.it/join-slack),
+- Read the [Code of Conduct](https://github.com/qiskit-community/qrmi/blob/main/CODE_OF_CONDUCT.md)
+- Familiarize yourself with the Qiskit community (via [Slack](https://qisk.it/join-slack),
    [GitHub](https://github.com/qiskit-community/feedback/discussions) etc.)
-
 
 ## Set up Python virtual development environment
 
@@ -46,15 +60,14 @@ system-wide packages by default. The specified folder will be created and is use
 installation. It can be placed anywhere. For more detail, see the official Python documentation,
 [Creation of virtual environments](https://docs.python.org/3/library/venv.html).
 
-```
+```bash
 python3 -m venv ~/.venvs/qrmi-dev
 ```
 
 Activate the environment by invoking the appropriate activation script for your system, which can
 be found within the environment folder. For example, for bash/zsh:
 
-
-```
+```bash
 source ~/.venvs/qrmi-dev/bin/activate
 ```
 
@@ -62,14 +75,14 @@ Upgrade pip within the environment to ensure QRMI dependencies installed in the 
 can be located for your system.  You need `pip>=25.1` to use the `--group` feature used to manage
 developer dependency groups.
 
-```
+```bash
 pip install -U pip
 ```
 
 You can easily install all the standard developer dependencies for in-place testing, documentation-building,
 and linting using:
 
-```
+```bash
 pip install -r requirements-dev.txt
 ```
 
@@ -77,12 +90,12 @@ pip install -r requirements-dev.txt
 
 For Conda users, a new environment can be created as follows.
 
-```
+```bash
 conda create -y -n QRMIDevenv python=3
 conda activate QRMIDevenv
 ```
 
-```
+```bash
 pip install -e .
 ```
 
@@ -127,60 +140,68 @@ please ensure that:
    - `make lint-wheels`
    - `make fmt-rust`
    - `make fmt-python`
-2. The documentation has been updated accordingly. In particular, if a
+1. The documentation has been updated accordingly. In particular, if a
    function or class has been modified during the PR, please update the
    *docstring* accordingly.
-3. If you are of the opinion that the modifications you made warrant additional tests,
+1. If you are of the opinion that the modifications you made warrant additional tests,
    feel free to include them
-4. Ensure that if your change has an end user facing impact (new feature,
+1. Ensure that if your change has an end user facing impact (new feature,
    deprecation, removal etc) that you have added a reno release note for that
    change and that the PR is tagged for the changelog.
-5. All contributors have signed the CLA.
-6. The PR has a concise and explanatory title (e.g. `Fixes Issue1234` is a bad title!).
-7. If the PR addresses an open issue the PR description includes the `fixes #issue-number`
+1. All contributors have signed the CLA.
+1. The PR has a concise and explanatory title (e.g. `Fixes Issue1234` is a bad title!).
+1. If the PR addresses an open issue the PR description includes the `fixes #issue-number`
   syntax to link the PR to that issue (**you must use the exact phrasing in order for GitHub
   to automatically close the issue when the PR merges**)
 
 ### Pre-commit detect-secrets
+
 `detect-secrets` is an open-source, developer-friendly tool designed to scan
 codebases for mistakenly committed secrets—such as API keys, passwords, and
 private tokens—before they leak. To keep our credentials secure, we recommend
 that all developers integrate this into their workflow using the following
 instructions.
 
-* Prerequisites: Before you begin, ensure you have a Python virtual environment
+- Prerequisites: Before you begin, ensure you have a Python virtual environment
   (venv) active. You will need to install pre-commit, which manages the hooks
   that run detect-secrets automatically.
 
-```
+```bash
 pip install pre-commit
 pre-commit install
 ```
+
 Please find `.pre-commit-config.yaml` for the initial setup.
 Following command was used to generate `.secrets.baseline` and to maximize the
 detection coverage.
-```
+
+```bash
 detect-secrets scan --force-use-all-plugins > .secrets.baseline
 ```
+
 **Handling False Positives**
 If the pre-commit hook identifies a secret that you have verified is not
 sensitive (a false positive), please use the following command to audit and
 update the baseline file. Once updated, include the modified .secrets.baseline
 in your Pull Request to ensure the pre-commit passes in the future.
-```
+
+```bash
 pip install detect-secrets
 detect-secrets scan --force-use-all-plugins --exclude-files '.secrets.*' --exclude-files '.git*' --baseline .secrets.baseline
 detect-secrets audit .secrets.baseline
 ```
+
 **Manual Execution and Overrides**
 To manually trigger a scan of all files in the repository for a local sanity check, execute the following command:
-```
+
+```bash
 pre-commit run --all-files
 ```
 
 **Bypassing the Hook (Not Recommended)**
 While not recommended, if you must force a commit without running the pre-commit checks (e.g., during an emergency fix), you may use the `--no-verify` flag:
-```
+
+```bash
 git commit -m "Your message" --no-verify
 ```
 
@@ -200,7 +221,6 @@ some time for your work to get reviewed and merged. PRs that are in a good shape
 are easier for maintainers to review and more likely to get merged in a timely manner. Please also make
 sure to always be kind and respectful in your interactions with maintainers and other contributors, you can read
 [the QRMI Code of Conduct](https://github.com/qiskit-community/qrmi/blob/main/CODE_OF_CONDUCT.md).
-
 
 ## Contributor Licensing Agreement
 
@@ -234,8 +254,9 @@ The easiest way to run QRMI's Python test suite is to use
 [**pytest**](https://docs.pytest.org/en/stable/). You can install pytest
 with pip: `pip install -U pytest`.
 
-to run QRMI's Python test suite:
-```
+To run QRMI's Python test suite:
+
+```bash
 pip install "$(ls ./target/wheels/qrmi-*.whl)[ibm,pasqal]"
 pytest .
 ```
@@ -266,7 +287,6 @@ For executing the tests with the makefile, a `make test` target is available.
 The execution of the tests (both via the make target and during manual
 invocation) takes into account the `LOG_LEVEL` environment variable.
 
-
 ### Unsafe code and Miri
 
 Any `unsafe` code added to the Rust logic should be exercised by Rust-space
@@ -276,11 +296,13 @@ undefined-behavior sanitizer.
 
 Miri is currently only available on `nightly` Rust channels, so to run it
 locally you will need to ensure you have that channel available, such as by
+
 ```bash
 rustup install nightly --components miri
 ```
 
 After this, you can run the Miri test suite with
+
 ```bash
 MIRIFLAGS="<flags go here>" cargo +nightly miri test
 ```
@@ -293,45 +315,36 @@ well.
 
 ### Testing the C API
 
-T.B.D
-
+TBD
 
 #### Writing C API tests
 
-T.B.D
-
+TBD
 
 ## Style and lint
 
 QRMI uses three tools for Python code formatting and lint checking. The
 first tool is [black](https://github.com/psf/black) which is a code formatting
 tool that will automatically update the code formatting to a consistent style.
-The second tool is [pylint](https://docs.pytest.org/en/stable/) which is a code linter
-which does a deeper analysis of the Python code to find both style issues and
-potential bugs and other common issues in Python.
-
+The second tool is [pylint](https://docs.pytest.org/en/stable/) which is a code linter which does a deeper analysis of the Python code to find both style issues and potential bugs and other common issues in Python.
 
 ### Rust style and lint
 
-For formatting and lint checking Rust code, you'll need to use different tools than you would for Python. QRMI uses [rustfmt](https://github.com/rust-lang/rustfmt) for
-code formatting. You can simply run `cargo fmt` (if you installed Rust with the
-default settings using `rustup`), and it will update the code formatting automatically to
-conform to the style guidelines. For lint checking, QRMI uses [clippy](https://github.com/rust-lang/rust-clippy) which can be invoked via `cargo clippy`.
-
+For formatting and lint checking Rust code, you'll need to use different tools than you would for Python. QRMI uses [rustfmt](https://github.com/rust-lang/rustfmt) for code formatting. You can simply run `cargo fmt` (if you installed Rust with the default settings using `rustup`), and it will update the code formatting automatically to conform to the style guidelines. For lint checking, QRMI uses [clippy](https://github.com/rust-lang/rust-clippy) which can be invoked via `cargo clippy`.
 
 ### C style and lint
 
 QRMI uses [clang-format](https://clang.llvm.org/docs/ClangFormat.html) to format C code.
 The style is based on LLVM, with a few QRMI-specific adjustments.
 
-
 ## Building API docs locally
 
 ### Prerequisites
+
 - Doxygen (for generating C API document)
-  * ```dnf install doxygen``` for Linux(RHEL/CentOS/Rocky Linux etc)
-  * ```apt install doxygen``` for Linux(Ubuntu etc.)
-  * ```brew install doxygen```for MacOS
+  - ```dnf install doxygen``` for Linux(RHEL/CentOS/Rocky Linux etc)
+  - ```apt install doxygen``` for Linux(Ubuntu etc.)
+  - ```brew install doxygen```for MacOS
 
 ### How to generate Rust API document
 
@@ -339,7 +352,6 @@ The style is based on LLVM, with a few QRMI-specific adjustments.
 . ~/.cargo/env
 cargo doc --no-deps --open
 ```
-
 
 ### How to generate Python API document
 
@@ -354,11 +366,13 @@ server> b
 ```
 
 Open the following page in your browser.
+
 ```shell-session
 http://localhost:8290/qrmi.html
 ```
 
 Quit server.
+
 ```shell-session
 server> q
 ```
@@ -371,12 +385,12 @@ doxygen Doxyfile
 
 HTML document will be created under `./html` directory. Open `html/index.html` in your web browser.
 
-
 ## Updating files for new release
 
 To create a new release, the following files must be updated:
 
 - `Cargo.toml`
+
 ```toml
   [package]
   name = "qrmi"
@@ -384,6 +398,7 @@ To create a new release, the following files must be updated:
 ```
 
 - `Cargo.lock`
+
 ```toml
   [[package]]
   name = "qrmi"
@@ -391,6 +406,7 @@ To create a new release, the following files must be updated:
 ```
 
 - `cbindgen.toml`
+
 ```toml
   #define QRMI_VERSION_MAJOR 0
   #define QRMI_VERSION_MINOR 14
