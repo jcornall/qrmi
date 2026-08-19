@@ -43,14 +43,6 @@ Design Notes
    caller forgets to do so explicitly.
 
 
-Not yet implemented (room for extension)
-----------------------------------------
-
--  ``QrmiResourceProvider`` / ``qrmi_provider_new()`` — resource
-   discovery / least-busy selection
--  Redirecting logs to Lua via ``qrmi_log_callback_set()``
-
-
 --------------
 
 
