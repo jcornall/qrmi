@@ -5,7 +5,11 @@ Contributing to QRMI
 
 .. rst-class:: lead
 
+<<<<<<< HEAD
    Outlines the process for contributing code, documentation, tests, and other improvements to QRMI.
+=======
+Outlines the process for contributing code, documentation, tests, and other improvements to QRMI.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 --------------
 
@@ -15,7 +19,10 @@ Contributing to QRMI
 
 --------------
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_prereq:
 
 Prerequisites
@@ -25,12 +32,21 @@ If you are new to contributing to Qiskit, we recommend you do the following
 before diving into the code:
 
 -  Read the :ref:`Code of Conduct <code_of_conduct>`
+<<<<<<< HEAD
 -  Familiarise yourself with the Qiskit community (via
    `Slack`_, `GitHub`_, etc.)
+=======
+
+-  Familiarise yourself with the Qiskit community (via
+   `Slack`_, .. container:: buttons
+
+   `GitHub`_, etc.)
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 .. _Slack: https://qisk.it/join-slack
 .. _GitHub: https://github.com/qiskit-community/feedback/discussions
 
+<<<<<<< HEAD
 
 .. _contributing_quick_start:
 
@@ -123,13 +139,44 @@ Once the forked repository is set up, you can clone it to your local machine and
       cd qrmi
       git checkout -b fix/my-change
 
+=======
+.. _contributing_cla:
+
+Contributor Licensing Agreement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- `Individual CLA`_
+- `Corporate CLA`_
+
+.. _Individual CLA: https://qisk.it/cla
+.. _Corporate CLA: https://qisk.it/corporate-cla
+
+Before you can submit any code, all contributors must sign a **contributor
+license agreement** (CLA). By signing a CLA, you are attesting that you are
+the author of the contribution, and that you're freely contributing it
+under the terms of the Apache-2.0 license.
+
+When you contribute to the Qiskit project with a new pull request, a bot
+will evaluate whether you have signed the CLA. If required, the bot will
+comment on the pull request, including a link to accept the agreement.
+The `Individual CLA`_ document is available for review as a PDF.
+
+.. note::
+
+   If your contribution is part of your employment or your contribution is the 
+   property of your employer, then you likely need to sign a `Corporate CLA`_ too.
+   Please email this to us at qiskit@us.ibm.com.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 Setting up the developer environment
 ------------------------------------
 
+<<<<<<< HEAD
 
 .. _contributing_venv:
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Create a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -215,7 +262,10 @@ Install QRMI from source
 
 Refer to :ref:`install`.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_issues:
 
 Issues and pull requests
@@ -239,15 +289,26 @@ discussion with the community about your work:
 If you've written some code but need help finishing it, want to get
 initial feedback on it prior to finishing it, or want to share it and
 discuss prior to finishing the implementation, you can open a **Draft
+<<<<<<< HEAD
 pull request**. This indicates to reviewers that the code in the PR isn't final
 and will change. Once the PR is finalised, click ``Ready for review`` to convert 
 the draft into a review-ready PR.
+=======
+pull request** and prepend the title with the **[WIP]** tag (for Work In
+Progress). This indicates to reviewers that the code in the PR isn't final
+and will change. The branch will not be merged until it is finished.
+You, or a reviewer, can remove the [WIP] tag when the code is ready to be
+reviewed for merging.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 Before marking your PR as "ready for review", make sure you
 have followed the PR checklist below. PRs that adhere to this list are
 more likely to be reviewed and merged in a timely manner.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _pull_request_checklist:
 
 Pull request checklist
@@ -277,7 +338,11 @@ When submitting a pull request for review, please ensure that:
    removal, etc.) include a Reno release note for that change and that
    the PR is tagged for the changelog.
 
+<<<<<<< HEAD
 #. All contributors have signed the :ref:`CLA <cla>`.
+=======
+#. All contributors have signed the :ref:`CLA <contributing_cla>`.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 #. The PR has a concise and descriptive title.
 
@@ -288,7 +353,10 @@ When submitting a pull request for review, please ensure that:
 
    - You must use the **exact phrasing** for GitHub to automatically close the issue when the PR merges.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Pre-commit ``detect-secrets``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -301,7 +369,10 @@ workflow using the following instructions:
 .. attention::
    Before you begin, ensure you have a **Python virtual environment** (i.e. ``venv``) active. You will need to install ``pre-commit``, which manages the hooks that run ``detect-secrets`` automatically.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Installing ``pre-commit``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -320,8 +391,12 @@ Find ``.pre-commit-config.yaml`` for the initial setup.
 
    detect-secrets scan --force-use-all-plugins > .secrets.baseline
 
+<<<<<<< HEAD
 The baseline records known false positives so future scans focus on newly introduced secrets.
 
+=======
+This file maximises the detection coverage.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 Handling false positives
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -336,7 +411,10 @@ Once updated, include the modified .secrets.baseline in your PR to ensure the pr
    detect-secrets scan --force-use-all-plugins --exclude-files '.secrets.*' --exclude-files '.git*' --baseline .secrets.baseline
    detect-secrets audit .secrets.baseline
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Manual execution and overrides
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -347,7 +425,10 @@ execute the following command:
 
    pre-commit run --all-files
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Bypassing the hook
 ^^^^^^^^^^^^^^^^^^
 
@@ -362,7 +443,10 @@ If you must force a commit without running the pre-commit checks
 
    git commit -m "Your message" --no-verify
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Code Review
 ~~~~~~~~~~~
 
@@ -386,6 +470,7 @@ to review and are more likely to get merged in a timely manner.
 Please also make sure to always be kind and respectful in your interactions with
 maintainers and other contributors, in line with the :ref:`QRMI Code of Conduct <code_of_conduct>`.
 
+<<<<<<< HEAD
 
 .. _contributing_docs:
 
@@ -399,6 +484,14 @@ the relevant documentation as part of the same pull request.
 Refer to :ref:`adding_documentation` for further guidance.
 
 
+=======
+Documentation
+-------------
+
+Please ensure any code changes are reflected in the documentation. 
+Refer to :ref:`adding_documentation` for further guidance.
+
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_testing:
 
 Testing
@@ -409,11 +502,14 @@ any existing tests and that newly added tests run successfully. Before
 you open a new pull request for your change, run QRMI's Python test suite. If you've
 modified native code, you should also run its Rust-based unit tests.
 
+<<<<<<< HEAD
 More information about QRMI's testing suite is available in our :ref:`testing documentation <testing>`.
 
 
 .. _contributing_unit_tests:
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Running unit tests
 ~~~~~~~~~~~~~~~~~~
 
@@ -468,7 +564,10 @@ Running unit tests
       during manual invocation) takes into account the ``LOG_LEVEL``
       environment variable.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. Unsafe code and Miri
 .. ~~~~~~~~~~~~~~~~~~~~
 
@@ -499,6 +598,7 @@ Running unit tests
 
 .. .. _miri.yml: https://github.com/Qiskit/qiskit/blob/main/.github/workflows/miri.yml
 
+<<<<<<< HEAD
 
 .. Testing the C API
 .. ~~~~~~~~~~~~~~~~~
@@ -511,18 +611,33 @@ Running unit tests
 
 .. TBD
 
+=======
+Testing the C API
+~~~~~~~~~~~~~~~~~
+
+TBD
+
+Writing C API tests
+^^^^^^^^^^^^^^^^^^^
+
+TBD
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 .. _contributing_style:
 
 Style and linting
 -----------------
 
+<<<<<<< HEAD
 Contributors must run the below commands to fix and verify any formatting issues prior to submitting a PR:
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. tabs::
 
    .. tab:: Rust
 
+<<<<<<< HEAD
       Fix any formatting issues:
 
       .. code-block:: bash
@@ -533,6 +648,18 @@ Contributors must run the below commands to fix and verify any formatting issues
          cd examples/rust
          cargo fmt --all -- --check
          cargo clippy --all-targets -- -D warnings
+=======
+      Execute the following commands to fix any formatting issues before submitting a PR.
+
+      .. code-block:: shell-session
+
+         $ . ~/.cargo/env
+         $ cargo fmt --all -- --check
+         $ cargo clippy --all-targets -- -D warnings
+         $ cd examples/rust
+         $ cargo fmt --all -- --check
+         $ cargo clippy --all-targets -- -D warnings
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
       QRMI uses `rustfmt`_ for Rust formatting and linting. You can run ``cargo fmt``
       (if you installed Rust with the default settings using ``rustup``), and it will
@@ -553,9 +680,15 @@ Contributors must run the below commands to fix and verify any formatting issues
 
    .. tab:: Python
 
+<<<<<<< HEAD
       Execute the following commands:
 
       .. code-block:: bash
+=======
+      Execute the following commands to fix any formatting issues before submitting a PR.
+
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          $ source ~/py312_qrmi_venv/bin/activate
          $ cd examples
@@ -574,6 +707,7 @@ Contributors must run the below commands to fix and verify any formatting issues
 
       .. _pylint: https://pypi.org/project/pylint/
 
+<<<<<<< HEAD
 
 .. _contributing_release:
 
@@ -583,6 +717,38 @@ Preparing a new release
 Certain files will need to be updated for a new release. Please
 refer to our :ref:`release and deploymeny guide <release_deployment>` for guidance on preparing a new release.
 
+=======
+.. _contributing_release:
+
+Updating files for new release
+------------------------------
+
+To create a new release, the following files must be updated:
+
+-  ``Cargo.toml``
+
+.. code-block:: toml
+
+     [package]
+     name = "qrmi"
+     version = "0.14.1"
+
+-  ``Cargo.lock``
+
+.. code-block:: toml
+
+     [[package]]
+     name = "qrmi"
+     version = "0.14.1"
+
+-  ``cbindgen.toml``
+
+.. code-block:: toml
+
+     #define QRMI_VERSION_MAJOR 0
+     #define QRMI_VERSION_MINOR 14
+     #define QRMI_VERSION_PATCH 1
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 Help and Support
 ----------------

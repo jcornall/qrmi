@@ -1,6 +1,10 @@
 [package]
 name = "qrmi"
+<<<<<<< HEAD
 version = "0.24.4"
+=======
+version = "0.23.0"
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 edition = "2021"
 license = "Apache-2.0"

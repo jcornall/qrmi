@@ -21,7 +21,11 @@ Install dependencies
 Assuming your python virtual environment is located at
 ``~/py311venv_qrmi_primitives/bin/activate``,
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    $ source ~/py311venv_qrmi_primitives/bin/activate
    $ pip install -r requirements.txt
@@ -96,6 +100,10 @@ Run `sampler.py`_:
 
 .. _sampler.py: https://github.com/qiskit-community/qrmi/blob/main/examples/qiskit_primitives/pasqal/sampler.py
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    $ python sampler.py

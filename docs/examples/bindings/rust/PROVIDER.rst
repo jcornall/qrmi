@@ -23,7 +23,11 @@ How to build `this example`_
 
 .. _this example: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/rust/resource_providers
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cargo clean
    cargo build --release
@@ -32,7 +36,11 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    QRMI Provider Example
 
@@ -49,7 +57,11 @@ How to run `this example`_
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-provider /etc/slurm/qrmi_config.json ibm_inst1 -f "num_qubits=127&max_shots=10000"
    Filters: num_qubits=127&max_shots=10000

@@ -23,7 +23,11 @@ How to build `this example`_
 
 .. _this example: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/c/config
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    mkdir build
    cd build
@@ -34,13 +38,21 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/
    qrmi_config <qrmi_config.json file> <resource name>
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/qrmi_config /etc/slurm/qrmi_config.json ibm_fez

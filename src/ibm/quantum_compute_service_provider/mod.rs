@@ -1,6 +1,10 @@
 // This code is part of Qiskit.
 //
 // (C) Copyright IBM 2026
+<<<<<<< HEAD
+=======
+// (C) Copyright UKRI-STFC (Hartree Centre) 2026
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 //
 // This code is licensed under the Apache License, Version 2.0. You may
 // obtain a copy of this license in the LICENSE.txt file in the root directory
@@ -10,15 +14,24 @@
 // copyright notice, and modified files need to carry a notice indicating
 // that they have been altered from the originals.
 
+<<<<<<< HEAD
 //! [`ResourceProvider`] implementation for IBM Qiskit Runtime Service.
+=======
+//! [`ResourceProvider`] implementation for IBM Quantum Compute Service.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 mod provider_filter;
 
 use crate::ibm::models::BackendConfiguration;
 use crate::ibm::IBMQuantumComputeService;
 use crate::resource_provider::ResourceProvider;
+<<<<<<< HEAD
 use crate::{QrmiError, QuantumResource, Result};
 use anyhow::Context;
+=======
+use crate::QuantumResource;
+use anyhow::{anyhow, Result};
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 use async_trait::async_trait;
 use futures::future::join_all;
 use log::warn;
@@ -27,8 +40,12 @@ use quantum_compute_client::apis::{auth, backends_api, configuration};
 use std::collections::HashMap;
 use std::env;
 
+<<<<<<< HEAD
 /// A [`ResourceProvider`] that discovers backends available through IBM Quantum Compute
 /// Service.
+=======
+/// A [`ResourceProvider`] that discovers backends available through IBM Quantum Compute Service.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 ///
 /// Constructed from a [`ResourceDef`] with `is_dynamic: true`.
 ///
@@ -72,7 +89,11 @@ impl IBMQuantumComputeServiceProvider {
             environment
                 .get(key)
                 .cloned()
+<<<<<<< HEAD
                 .ok_or_else(|| QrmiError::MissingConfigKey(key.to_string()))
+=======
+                .ok_or_else(|| anyhow!("Missing '{}' in environment map", key))
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
         };
 
         let qrs_endpoint = get("QRMI_IBM_QCS_ENDPOINT")?;
@@ -152,11 +173,19 @@ impl ResourceProvider for IBMQuantumComputeServiceProvider {
             &mut token_lifetime,
         )
         .await
+<<<<<<< HEAD
         .context("token renewal failed")?;
 
         let response = backends_api::list_backends(&config, Some("2025-01-01"))
             .await
             .context("failed to list backends")?;
+=======
+        .map_err(|e| anyhow!("Token renewal failed: {:?}", e))?;
+
+        let response = backends_api::list_backends(&config, Some("2025-01-01"))
+            .await
+            .map_err(|e| anyhow!("Failed to list backends: {:?}", e))?;
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
         // Apply name and is_simulator filters at list stage, keep queue_length for sorting.
         let candidates: Vec<_> = response

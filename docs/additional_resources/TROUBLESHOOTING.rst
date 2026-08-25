@@ -74,9 +74,15 @@ This will fail due to the error:
 **Solution:**
 
 -  Use a Premium Plan account, or
+<<<<<<< HEAD
 -  Use `Batch execution mode`_`
 
 .. _Batch execution mode: https://quantum.cloud.ibm.com/docs/en/guides/execution-modes#batch-mode
+=======
+-  Use `Batch`_ execution mode
+
+.. _Batch: https://quantum.cloud.ibm.com/docs/en/guides/execution-modes#batch-mode
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    -  Add ``QRMI_IBM_QRS_SESSION_MODE`` environment variable with
       "batch" in your ``qrmi_config.json``

@@ -25,7 +25,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py311_qrmi_venv/bin/activate
    pip install -r ../requirements.txt
@@ -77,7 +81,11 @@ Run `example.py`_:
 
 .. _example.py: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/python/pasqal_local
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python example.py -h
    usage: example.py [-h] --backend BACKEND input
@@ -94,6 +102,10 @@ Run `example.py`_:
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python example.py --backend BACKEND_NAME input.json

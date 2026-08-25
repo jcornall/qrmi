@@ -22,7 +22,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py311_qrmi_venv/bin/activate
    pip install -r ../requirements.txt
@@ -98,7 +102,11 @@ Run `example.py`_:
 
 .. _example.py: https://github.com/qiskit-community/qrmi/blob/main/examples/qrmi/python/ibm_quantum_compute_service/example.py
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python example.py -h
    usage: example.py [-h] backend input program_id
@@ -115,7 +123,11 @@ Run `example.py`_:
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export ibm_torino_QRMI_IBM_QCS_ENDPOINT=https://quantum.cloud.ibm.com/api/v1
    export ibm_torino_QRMI_IBM_QCS_IAM_ENDPOINT=https://iam.cloud.ibm.com

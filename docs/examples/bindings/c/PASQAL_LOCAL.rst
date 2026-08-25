@@ -64,7 +64,11 @@ and write it to a file like this:
 How to build `this example`_
 ----------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    mkdir build
    cd build
@@ -75,13 +79,21 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/pasqal_local
    pasqal_local <backend name> <input file>
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/pasqal_local PASQAL_LOCAL input.json

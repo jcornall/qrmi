@@ -54,7 +54,11 @@ How to build `this example`_
 
 .. _this example: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/c/resource_providers
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
     mkdir build
     cd build
@@ -64,7 +68,11 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
     # No filter
     ./build/providers /path/to/qrmi_config.json ibm_inst1

@@ -23,7 +23,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py311_qrmi_venv/bin/activate
    pip install -r ../requirements.txt
@@ -114,7 +118,11 @@ How to run `this example`_
 
 All information is baked into the Python script. Run `pasqal.py`_:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python pasqal.py
 

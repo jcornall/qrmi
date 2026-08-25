@@ -20,13 +20,21 @@ Quick Start
 
 We encourage installing QRMI via ``pip``:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install qrmi
 
 To use a specific quantum resource, install QRMI with the corresponding optional dependencies:
 
+<<<<<<< HEAD
 .. code-block:: bash 
+=======
+.. code-block:: shell-session 
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install "qrmi[ibm]"       # Include dependencies for IBM
    pip install "qrmi[iqm]"       # Include dependencies for IQM
@@ -36,7 +44,11 @@ To use a specific quantum resource, install QRMI with the corresponding optional
 
 Or combine multiple resources:
 
+<<<<<<< HEAD
 .. code-block:: bash 
+=======
+.. code-block:: shell-session 
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install "qrmi[ibm,pasqal]"
 
@@ -53,7 +65,10 @@ Pip will handle all dependencies automatically and you will always install the l
 
 .. _install_source:
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 Installing from Source
 ----------------------
 
@@ -95,13 +110,17 @@ Prerequisites
    -  ``apt install doxygen`` for Linux(Ubuntu etc.)
    -  ``brew install doxygen`` for MacOS
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _building_core_qrmi_libraries:
 
 Building Core QRMI Libraries
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Core QRMI is a set of libraries to control the state of quantum
+<<<<<<< HEAD
 resources. It is written in Rust with C, Python and Lua APIs exposed for ease
 of integration into any compute infrastructure.
 
@@ -126,21 +145,34 @@ QRMI's source code can be cloned from the GitHub repository using the following 
          git clone git@github.com:qiskit-community/qrmi.git
 
 Alternatively, the latest prebuilt binaries for Linux (glibc 2.28 compatible) on x86_64, ppc64le, and aarch64
+=======
+resources. It is written in Rust with C and Python APIs exposed for ease
+of integration into any compute infrastructure.
+
+Prebuilt binaries for Linux (glibc 2.28 compatible) on x86_64, ppc64le, and aarch64
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 platforms are available for download from the repository's `Releases tab`_.
 
 .. _Releases tab: https://github.com/qiskit-community/qrmi/releases/latest
 
+<<<<<<< HEAD
 
 Building from Source
 ^^^^^^^^^^^^^^^^^^^^
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 This section will guide you through building QRMI for C, Python and Lua.
 
 .. tabs::
 
    .. tab:: Rust/C
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          . ~/.cargo/env
          cargo clean
@@ -150,7 +182,11 @@ This section will guide you through building QRMI for C, Python and Lua.
 
       1. Setup a Python virtual environment
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          . ~/.cargo/env
          cargo clean
@@ -161,21 +197,33 @@ This section will guide you through building QRMI for C, Python and Lua.
 
       2. Create stub file for Python code
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          . ~/.cargo/env
          cargo run --bin stubgen --features=pyo3
 
       3. Create a wheel for distribution
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          source ~/py312_qrmi_venv/bin/activate
          CARGO_TARGET_DIR=./target/release/maturin maturin build --release
 
       For example,
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          CARGO_TARGET_DIR=./target/release/maturin maturin build --release
 
@@ -193,12 +241,19 @@ This section will guide you through building QRMI for C, Python and Lua.
       Wheel is created under the ``./target/release/maturin/wheels`` directory.
       You can distribute and install on your hosts using ``pip install <wheel>``.
 
+<<<<<<< HEAD
       .. code-block:: bash
+=======
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          source ~/py312_qrmi_venv/bin/activate
          pip install /shared/qrmi/target/release/maturin/wheels/qrmi-0.7.1-cp312-abi3-manylinux_2_34_aarch64.whl
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _installing_lua_bindings:
 
 Installing Lua Bindings
@@ -275,11 +330,16 @@ Once installed, the Lua binding can be built using either gcc or cmake:
          <QRMI_ROOT>/qrmi.h
          <QRMI_ROOT>/libqrmi.so
 
+<<<<<<< HEAD
       Create a build directory inside the Lua bindings directory and run cmake:
 
       .. code:: bash
 
          cd lua/
+=======
+      .. code:: bash
+
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
          mkdir build && cd build
          cmake -DQRMI_ROOT=/path/to/qrmi/install ..
          cmake --build .
@@ -325,17 +385,28 @@ enable the ``munge`` feature during the build process.
 
 #. Build the Rust library:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    . ~/.cargo/env
    cargo build --release --features munge
 
 #. Build the Python wheels:
 
+<<<<<<< HEAD
 .. code-block:: bash
 
    source ~/py312_qrmi_venv/bin/activate
    CARGO_TARGET_DIR=./target/release/maturin maturin build --release --features munge,pyo3/abi3,qrmi/pyo3
+=======
+.. code-block:: shell-session
+
+   source ~/py312_qrmi_venv/bin/activate
+   CARGO_TARGET_DIR=./target/release/maturin maturin build --release --features pyo3/extension-module,munge,pyo3/abi3,qrmi/pyo3
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 
 Further Resources
@@ -358,6 +429,10 @@ during the lifecycle of a Slurm job. You can find full details on implementing t
 
 .. _here: https://github.com/qiskit-community/spank-plugins
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 The Slurm plugin for quantum resources is only one example of QRMI's workload manager integrations. More information about QRMI's 
 integrations is available in our :ref:`Quantum-HPC Integration paper <qrmi_integrations>`.
 
@@ -374,11 +449,19 @@ environment variable with log level. Supported levels are ``error``,
 
 If you specify ``trace``, you can find underlying HTTP transaction logs.
 
+<<<<<<< HEAD
 .. code-block:: bash
 
    RUST_LOG=trace <YOUR QRMI EXECUTABLE>
 
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+
+   RUST_LOG=trace <YOUR QRMI EXECUTABLE>
+
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    [2025-08-16T03:47:38Z DEBUG reqwest::connect] starting new connection: https://iam.cloud.ibm.com/
    [2025-08-16T03:47:38Z DEBUG direct_access_api::middleware::auth] current token ...
@@ -387,14 +470,22 @@ If you specify ``trace``, you can find underlying HTTP transaction logs.
 API Documentation
 ~~~~~~~~~~~~~~~~~
 
+<<<<<<< HEAD
 Links to the Python, Rust, C and Lua API documentation are available here:
+=======
+Links to the Python, Rust, C and Lua API documentation is available here:
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 -  :ref:`rust_api`
 -  :ref:`python_api`
 -  :ref:`c_api`
 -  :ref:`lua_api`
 
+<<<<<<< HEAD
 The Python, Rust and C API documentation can be built locally using our :ref:`API references guide <api_refs>`.
+=======
+The Python, Rust and C API documentation can be built locally using our :ref:`API documentation guide <api_docs>`.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 
 Contributing

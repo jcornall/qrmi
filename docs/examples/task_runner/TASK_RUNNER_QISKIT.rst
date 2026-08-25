@@ -24,7 +24,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install -f requirements.txt
 
@@ -43,7 +47,11 @@ Generates EstimatorV2 input for the circuit introduced in IBM's `Get Started wit
 
 Usage:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    usage: gen_estimator_inputs.py [-h] [--iam_url IAM_URL] backend base_url apikey crn
 
@@ -93,7 +101,11 @@ Generates SamplerV2 input for the circuit introduced in IBM's `Get Started with 
 
 Usage:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    usage: gen_sampler_inputs.py [-h] [--iam_url IAM_URL] backend base_url apikey crn
 

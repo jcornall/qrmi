@@ -15,6 +15,11 @@ use crate::error::{QrmiError, QrmiErrorKind};
 use crate::ibm::IBMQiskitRuntimeServiceProvider;
 use crate::ibm::IBMQuantumComputeServiceProvider;
 use crate::ibm::IBMQuantumSystemProvider;
+<<<<<<< HEAD
+=======
+use crate::ibm::{IBMQiskitRuntimeService, IBMQuantumComputeService, IBMQuantumSystem};
+use crate::iqm::IQMServer;
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 use crate::models::{Config, ResourceType, TaskStatus};
 use std::cell::RefCell;
 use std::ffi::{CStr, CString};
@@ -774,12 +779,65 @@ pub unsafe extern "C" fn qrmi_resource_new(
     ffi_helpers::null_pointer_check!(resource_id, std::ptr::null_mut());
 
     if let Ok(id_str) = CStr::from_ptr(resource_id).to_str() {
+<<<<<<< HEAD
         let res = match crate::common::create_resource(&resource_type, id_str) {
             Ok(v) => v,
             Err(err) => {
                 _record_error(err);
                 return std::ptr::null_mut();
             }
+=======
+        let res: Box<dyn crate::QuantumResource> = match resource_type {
+            ResourceType::IBMQuantumSystem => match IBMQuantumSystem::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::QiskitRuntimeService => match IBMQiskitRuntimeService::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::IBMQuantumComputeService => match IBMQuantumComputeService::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::PasqalCloud => match PasqalCloud::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::PasqalLocal => match PasqalLocal::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::AliceBobFelis => match AliceBobFelis::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+            ResourceType::IQMServer => match IQMServer::new(id_str) {
+                Ok(v) => Box::new(v),
+                Err(err) => {
+                    _set_last_error(format!("{}", err));
+                    return std::ptr::null_mut();
+                }
+            },
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
         };
 
         let qrmi = Box::new(QuantumResource {
@@ -1731,6 +1789,15 @@ pub unsafe extern "C" fn qrmi_provider_new(
                 Ok(inner) => Box::new(inner),
                 Err(err) => {
                     _record_error(err);
+                    return std::ptr::null_mut();
+                }
+            }
+        }
+        ResourceType::IBMQuantumComputeService => {
+            match IBMQuantumComputeServiceProvider::new(&env_map) {
+                Ok(inner) => Box::new(inner),
+                Err(err) => {
+                    _set_last_error(format!("{:?}", err));
                     return std::ptr::null_mut();
                 }
             }

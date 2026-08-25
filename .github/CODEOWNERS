@@ -37,7 +37,11 @@
 /dependencies/iqm_client/                       @ohtanim @yoonho
 /examples/qiskit_primitives/ibm/                @ohtanim @OkuyanBoga
 /examples/qiskit_primitives/iqm/                @ohtanim @yoonho
+<<<<<<< HEAD
 /examples/**/quantum_compute_service/           @OkuyanBoga @ohtanim
+=======
+/examples/**/quantum_compute_service/            @OkuyanBoga @ohtanim
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 /examples/**/ibm_quantum_system/                @ohtanim @yoonho
 /examples/**/iqm_server/                        @ohtanim @yoonho
 /examples/task_runner/qiskit/                   @ohtanim @OkuyanBoga

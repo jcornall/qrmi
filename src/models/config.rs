@@ -49,8 +49,20 @@ impl<'de> serde::Deserialize<'de> for ResourceType {
         D: serde::Deserializer<'de>,
     {
         let s = String::deserialize(deserializer)?;
+<<<<<<< HEAD
         ResourceType::from_qpu_type_str(&s).ok_or_else(|| {
             serde::de::Error::unknown_variant(
+=======
+        match s.as_str() {
+            "ibm-quantum-system" => Ok(ResourceType::IBMQuantumSystem),
+            "qiskit-runtime-service" => Ok(ResourceType::QiskitRuntimeService),
+            "ibm-quantum-compute-service" => Ok(ResourceType::IBMQuantumComputeService),
+            "pasqal-cloud" => Ok(ResourceType::PasqalCloud),
+            "pasqal-local" => Ok(ResourceType::PasqalLocal),
+            "alice-bob-felis" => Ok(ResourceType::AliceBobFelis),
+            "iqm-server" => Ok(ResourceType::IQMServer),
+            _ => Err(serde::de::Error::unknown_variant(
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                 &s,
                 &[
                     "ibm-quantum-system",

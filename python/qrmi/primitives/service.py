@@ -27,4 +27,69 @@ package instead: ``from qrmi.primitives import QRMIService`` or
 
 from qrmi import QRMIService  # pylint: disable=no-name-in-module
 
+<<<<<<< HEAD
 __all__ = ["QRMIService"]
+=======
+
+class QRMIService:
+    """Class for interacting with the QRMI resources"""
+
+    def __init__(self):
+        # if resource acquisition failed in QRMI plugin,
+        # error reason may be available via environment variable.
+        plugin_error = os.environ.get("QRMI_PLUGIN_ERROR")
+        if plugin_error is not None:
+            raise RuntimeError(plugin_error)
+
+        qpus, qpu_types = get_job_qpu_resources_and_types()
+        logger.debug("qpus: %s", qpus)
+        logger.debug("qpu types: %s", qpu_types)
+
+        self._qrmi_resources = {}
+        for i, qpu in enumerate(qpus):
+            qpu = qpu.strip()
+            qrmi = None
+            if qpu_types[i] == "ibm-quantum-system":
+                qrmi = QuantumResource(qpu, ResourceType.IBMQuantumSystem)
+            elif qpu_types[i] == "ibm-quantum-compute-service":
+                qrmi = QuantumResource(qpu, ResourceType.IBMQuantumComputeService)
+            elif qpu_types[i] == "qiskit-runtime-service":
+                qrmi = QuantumResource(qpu, ResourceType.IBMQiskitRuntimeService)
+            elif qpu_types[i] == "pasqal-cloud":
+                qrmi = QuantumResource(qpu, ResourceType.PasqalCloud)
+            elif qpu_types[i] == "pasqal-local":
+                qrmi = QuantumResource(qpu, ResourceType.PasqalLocal)
+            elif qpu_types[i] == "alice-bob-felis":
+                qrmi = QuantumResource(qpu, ResourceType.AliceBobFelis)
+            elif qpu_types[i] == "iqm-server":
+                qrmi = QuantumResource(qpu, ResourceType.IQMServer)
+            else:
+                logger.warning(
+                    "Unsupported resource type: %s specified for %s", qpu_types[i], qpu
+                )
+                continue
+
+            if qrmi.is_accessible() is True:
+                self._qrmi_resources[qpu] = qrmi
+            else:
+                logger.debug("%s is not accessible now. ignored.", qpu)
+
+    def resources(self) -> List[QuantumResource]:
+        """Return all accessible QRMI resources.
+
+        Returns:
+            List[QuantumResource]: QRMI resources
+        """
+        return list(self._qrmi_resources.values())
+
+    def resource(self, resource_id: str) -> QuantumResource:
+        """Return a single backend matching the specified resource identifier.
+
+        Args:
+            resource_id: A resource identifier, i.e. backend name for IBM Quantum.
+
+        Returns:
+            QuantumResource: QRMI resource if found, otherwise None.
+        """
+        return self._qrmi_resources.get(resource_id)
+>>>>>>> 5cc446c (Merge sphinx integration (#5))

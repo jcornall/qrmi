@@ -9,6 +9,7 @@ Code of Conduct
 
 .. rst-class:: lead
 
+<<<<<<< HEAD
    The standards of behaviour expected of all members of the QRMI community.
 
 --------------
@@ -24,3 +25,17 @@ License: `CC BY 4.0`_. Copyright Contributors to Qiskit.
 
 .. _Qiskit Code of Conduct: https://github.com/Qiskit/qiskit/blob/main/CODE_OF_CONDUCT.md
 .. _CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+=======
+   The expected standards of behaviour for all members and contributors of the QRMI community.
+
+--------------
+
+All members of this project agree to adhere to the `Qiskit Code of
+Conduct`_.
+
+.. _Qiskit Code of Conduct: https://github.com/Qiskit/qiskit/blob/main/CODE_OF_CONDUCT.md
+
+License: `CC BY 4.0`_, Copyright Contributors to Qiskit.
+
+.. _CC BY 4.0: https://creativecommons.org/licenses/by/4.0/
+>>>>>>> 5cc446c (Merge sphinx integration (#5))

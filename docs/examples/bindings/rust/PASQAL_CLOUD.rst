@@ -94,7 +94,11 @@ and write it to a file like this:
 How to build `this example`_
 ----------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cargo clean
    cargo build --release
@@ -103,7 +107,11 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-pasqal-cloud --help
    QRMI for Pasqal Cloud - Example
@@ -118,6 +126,10 @@ How to run `this example`_
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-pasqal-cloud -b FRESNEL -i input.json

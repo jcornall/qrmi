@@ -30,8 +30,13 @@ int main(int argc, char *argv[]) {
 
   load_dotenv();
 
+<<<<<<< HEAD
   QrmiQuantumResource *qrmi = qrmi_resource_new(
       argv[1], QRMI_RESOURCE_TYPE_IBM_QUANTUM_COMPUTE_SERVICE);
+=======
+  QrmiQuantumResource *qrmi =
+      qrmi_resource_new(argv[1], QRMI_RESOURCE_TYPE_IBM_QUANTUM_COMPUTE_SERVICE);
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
   if (!qrmi) {
     const char *last_error = qrmi_get_last_error();
     fprintf(stderr, "Failed to create QRMI for %s. %s (%d)\n", argv[1],

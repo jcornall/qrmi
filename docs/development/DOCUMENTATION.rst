@@ -1,7 +1,12 @@
 .. _documentation:
 
+<<<<<<< HEAD
 Documentation
 =============
+=======
+QRMI Documentation
+==================
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 .. rst-class:: lead
 
@@ -15,6 +20,7 @@ Documentation
 
 --------------
 
+<<<<<<< HEAD
 Overview
 --------
 
@@ -23,6 +29,13 @@ Sphinx
 ~~~~~~
 
 These pages are built using `Sphinx`_, a documentation generator. The process of building these HTML pages from the reStructured Text source files is automated via the Sphinx Documentation GitHub Action.
+=======
+Sphinx
+------
+
+These pages are built using `Sphinx`_, a documentation generator. The process of building these HTML pages from the reStructured Text source files is automated via the Sphinx Documentation GitHub Action.
+These pages are built using `Sphinx`_, a documentation generator. The process of building these HTML pages from the reStructured Text source files is automated via the Sphinx Documentation GitHub Action.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 
@@ -31,6 +44,7 @@ The GitHub Action is responsible for two tasks; building the documentation, then
 - Pushing to a feature branch with an associated PR triggers the ``build`` job, which carries out checks ensuring the documentation builds correctly.
 - Pushing to ``main`` triggers both the ``build`` and ``deploy`` jobs, which build the documentation and deploy it to GitHub Pages. 
 
+<<<<<<< HEAD
 Further information about Sphinx can be found in the `Sphinx documentation`_.
 
 .. _Sphinx documentation: https://www.sphinx-doc.org/en/master/#user-guide
@@ -59,6 +73,18 @@ More advanced information on pandoc usage can be found in the `pandoc documentat
 
 .. _pandoc: https://pandoc.org/
 .. _pandoc documentation: https://pandoc.org/MANUAL.html
+=======
+
+Theming and Customisation
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Theming and customisation (such as extensions, HTML options, etc.) are configured in ``docs/conf.py``. 
+
+This documentation uses the `Shibuya`_ theme. 
+
+.. _Shibuya: https://shibuya.lepture.com/
+
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 
 .. _adding_documentation:
@@ -72,7 +98,11 @@ Sphinx stores built HTML files in the ``_build`` directory. Static files, such a
 
 If you would like to add to the existing documentation, follow these steps:
 
+<<<<<<< HEAD
 #. Create a new reStructured Text (``.rst``) file in the ``docs`` directory. If the file relates to an existing topic, you can place it in the appropriate subdirectory.
+=======
+#. Create a new reStructured Text (`.rst`) file in the ``docs`` directory. If the file relates to an existing topic, you can place it in the appropriate subdirectory.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 #. In ``docs/index.rst``, add a reference to the new file in the appropriate section of the ``toctree`` directive. For example, for a new file called ``new_topic.rst``:
 
@@ -85,6 +115,7 @@ If you would like to add to the existing documentation, follow these steps:
 
          new_topic
 
+<<<<<<< HEAD
 #. :ref:`Build the documentation locally. <building_documentation>` If the build is successful, commit and push your changes to the repository.
 
 
@@ -106,12 +137,21 @@ To build, test and verify the changes locally (and identify any errors):
       pip install -e ".[all, docs]"
 
 #. Build the documentation and serve it locally:
+=======
+.. _building_documentation:
+
+Building Documentation Locally
+------------------------------
+
+To build, test and verify the changes locally (and identify any errors), run the following commands:
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    .. code-block:: bash
 
       cd docs/
       sphinx-autobuild . _build/html/
 
+<<<<<<< HEAD
 The build process will identify any errors, such as missing references, toctree issues or syntax errors. 
 
 
@@ -121,17 +161,34 @@ API References
 ~~~~~~~~~~~~~~
 
 QRMI's hosted API references can be accessed using the below site links:
+=======
+
+.. _api_docs:
+
+API Documentation
+-----------------
+
+QRMI's API documentation can be accessed through this documentation using the below links:
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 - :ref:`rust_api`
 - :ref:`python_api`
 - :ref:`c_api`
 - :ref:`lua_api`
 
+<<<<<<< HEAD
 To build the API references locally, follow the instructions below.
 
 
 Prerequisites
 ^^^^^^^^^^^^^
+=======
+There is also the option to build the documentation locally, using the below instructions.
+
+
+Prerequisites
+~~~~~~~~~~~~~
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 -  Doxygen (for generating C API document)
 
@@ -139,33 +196,52 @@ Prerequisites
    -  ``apt install doxygen`` for Linux(Ubuntu etc.)
    -  ``brew install doxygen`` for MacOS
 
+<<<<<<< HEAD
 
 Building Local API References
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. tabs::
 
    .. tab:: Rust API
 
+<<<<<<< HEAD
       1. Build the Rust API docs using the following command:
       
       .. code-block:: bash
+=======
+      To build the Rust API docs locally, run the following command:
+      
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          . ~/.cargo/env
          cargo doc --no-deps --open
 
    .. tab:: C API
 
+<<<<<<< HEAD
       1. Build the C API docs using the following command:
 
       .. code-block:: bash
+=======
+      To build the C API docs locally, run the following command:
+
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          doxygen Doxyfile
 
       By default, the HTML documents will be created in the ``build/doxygen/html/``
+<<<<<<< HEAD
       directory. 
       
       2. Open ``build/doxygen/html/index.html`` in your web browser.
+=======
+      directory. Open ``buid/doxygen/html/index.html`` in your web browser.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    .. tab:: Python API
 
@@ -174,9 +250,15 @@ Building Local API References
             Ensure the QRMI Python package is installed in your Python virtual
             environment (e.g. ``~/py312_qrmi_venv``).
 
+<<<<<<< HEAD
       1. Build the Python API docs using the following command:
 
       .. code-block:: bash
+=======
+      To build the Python API docs, run the following command:
+
+      .. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
          source ~/py312_qrmi_venv/bin/activate
          python -m pydoc -p 8290
@@ -184,6 +266,7 @@ Building Local API References
          Server commands: [b]rowser, [q]uit
          server> b
 
+<<<<<<< HEAD
       2. Navigate to the following address in your browser:
 
       .. code-block:: bash
@@ -280,3 +363,16 @@ Theming and customisation (such as extensions, HTML options, etc.) are configure
 This documentation uses the `Shibuya`_ theme. 
 
 .. _Shibuya: https://shibuya.lepture.com/
+=======
+      The docs will be available at the following address in your browser:
+
+      .. code-block:: shell-session
+
+         http://localhost:8290/qrmi.html
+
+      To quit the server:
+
+      .. code-block:: shell-session
+
+         server> q
+>>>>>>> 5cc446c (Merge sphinx integration (#5))

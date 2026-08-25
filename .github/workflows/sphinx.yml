@@ -15,7 +15,10 @@ on:
       - 'Cargo.toml'
       - 'pyproject.toml'
       - 'Doxyfile'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
   pull_request:  
     branches:
     - main
@@ -27,6 +30,7 @@ on:
       - 'Cargo.toml'
       - 'pyproject.toml'
       - 'Doxyfile'
+<<<<<<< HEAD
 
   workflow_dispatch:
 
@@ -36,13 +40,21 @@ on:
 
   merge_group:
 
+=======
+  workflow_dispatch:
+
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 permissions:
   contents: read
   pages: write
   id-token: write
 
 concurrency:
+<<<<<<< HEAD
   group: ${{ github.workflow }}-${{ github.ref }}
+=======
+  group: pages
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
   cancel-in-progress: true
 
 jobs:
@@ -65,10 +77,18 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+<<<<<<< HEAD
           pip install -e ".[all, docs]"
 
       - name: Build Python API documentation
         run: |
+=======
+          pip install -e .[docs]
+
+      - name: Build Python API documentation
+        run: |
+          pip install -e .[all]
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
           sphinx-apidoc --no-toc -o docs/_api/python/ python/qrmi/
 
       - name: Verify Python API documentation
@@ -103,6 +123,7 @@ jobs:
         run: |
           test -s build/doxygen/html/index.html
 
+<<<<<<< HEAD
       - name: Cache Sphinx doctrees
         uses: actions/cache@v4
         with:
@@ -111,6 +132,8 @@ jobs:
           restore-keys: |
             sphinx-${{runner.os}}-
 
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
       - name: Build Sphinx documentation
         run: |
           sphinx-build \

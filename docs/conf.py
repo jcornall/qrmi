@@ -85,6 +85,12 @@ linkcheck_ignore = [
     r"https://crates.io/crates/log",
     r"https://github.com/Qiskit/ibm-quantum-schemas/.*",
     r"https://resonance.iqm.tech/",
+<<<<<<< HEAD
+=======
+    # r"https://qisk.it/.*",
+    # r"https://github.com/.*/tree/.*",
+    # r"https://github.com/.*/blob/.*",
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 ]
 
 # Optional but recommended
@@ -163,8 +169,11 @@ ANNOUNCEMENT = """
 html_theme_options = {
     # "discussion_url": "",
     "announcement": ANNOUNCEMENT,
+<<<<<<< HEAD
     # "light_logo": "qrmi_logo_light.png",
     # "dark_logo": "qrmi_logo_dark.png",
+=======
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
     "nav_links": [
         {
             "title": "SPANK Plugins",

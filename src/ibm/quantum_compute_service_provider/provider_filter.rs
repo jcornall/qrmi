@@ -1,6 +1,10 @@
 // This code is part of Qiskit.
 //
 // (C) Copyright IBM 2026
+<<<<<<< HEAD
+=======
+// (C) Copyright UKRI-STFC (Hartree Centre) 2026
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 //
 // This code is licensed under the Apache License, Version 2.0. You may
 // obtain a copy of this license in the LICENSE.txt file in the root directory
@@ -24,7 +28,11 @@
 //! Example: `num_qubits=127&name=ibm_*&status=online`
 
 use crate::ibm::models::BackendConfiguration;
+<<<<<<< HEAD
 use crate::{QrmiError, Result};
+=======
+use anyhow::{anyhow, Result};
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 use glob::Pattern;
 use quantum_compute_client::models::BackendsResponseV2DevicesInner;
 
@@ -76,31 +84,53 @@ impl BackendFilter {
                 continue;
             }
             let (key, value) = pair.split_once('=').ok_or_else(|| {
+<<<<<<< HEAD
                 QrmiError::InvalidInput(format!(
                     "invalid filter segment {pair:?}: expected 'key=value'"
                 ))
+=======
+                anyhow!("Invalid filter segment {:?}: expected 'key=value'", pair)
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
             })?;
             match key.trim() {
                 "num_qubits" => {
                     let n: u32 = value.trim().parse().map_err(|_| {
+<<<<<<< HEAD
                         QrmiError::InvalidInput(format!(
                             "invalid value for filter 'num_qubits': {value:?} (expected a non-negative integer)"
                         ))
+=======
+                        anyhow!(
+                            "Invalid value for 'num_qubits': {:?} (expected a non-negative integer)",
+                            value
+                        )
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                     })?;
                     f.num_qubits = Some(n);
                 }
                 "max_shots" => {
                     f.max_shots = Some(value.trim().parse::<u64>().map_err(|_| {
+<<<<<<< HEAD
                         QrmiError::InvalidInput(format!(
                             "invalid value for filter 'max_shots': {value:?} (expected a non-negative integer)"
                         ))
+=======
+                        anyhow!(
+                            "Invalid value for 'max_shots': {:?} (expected a non-negative integer)",
+                            value
+                        )
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                     })?);
                 }
                 "name" => {
                     let pattern = Pattern::new(value.trim()).map_err(|e| {
+<<<<<<< HEAD
                         QrmiError::InvalidInput(format!(
                             "invalid glob pattern for 'name' filter {value:?}: {e}"
                         ))
+=======
+                        anyhow!("Invalid glob pattern for 'name' filter {:?}: {}", value, e)
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                     })?;
                     f.name_pattern = Some(pattern);
                 }
@@ -109,9 +139,16 @@ impl BackendFilter {
                         "true" => true,
                         "false" => false,
                         _ => {
+<<<<<<< HEAD
                             return Err(QrmiError::InvalidInput(format!(
                                 "invalid value for filter 'is_simulator': {value:?} (expected 'true' or 'false')"
                             )))
+=======
+                            return Err(anyhow!(
+                            "Invalid value for 'is_simulator': {:?} (expected 'true' or 'false')",
+                            value
+                        ))
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                         }
                     };
                 }
@@ -119,9 +156,16 @@ impl BackendFilter {
                     f.status = match value.trim() {
                         "online" => StatusFilter::Online,
                         _ => {
+<<<<<<< HEAD
                             return Err(QrmiError::InvalidInput(format!(
                                 "invalid value for filter 'status': {value:?} (supported: 'online')"
                             )))
+=======
+                            return Err(anyhow!(
+                                "Invalid value for 'status': {:?} (supported: 'online')",
+                                value
+                            ))
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
                         }
                     };
                 }

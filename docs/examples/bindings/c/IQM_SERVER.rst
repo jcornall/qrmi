@@ -56,7 +56,11 @@ generate. You can customise quantum circuits by editing the code.
 How to build `this example`_
 ----------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    mkdir build
    cd build
@@ -67,14 +71,22 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/iqm_server
    iqm_server <qc_alias> <IQM JSON> <job_type('circuit','run' or 'sweep')
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export garnet_mock_QRMI_IQM_ISA_ENDPOINT=https://resonance.meetiqm.com
    export garnet_mock_QRMI_IQM_ISA_TOKEN=your api token

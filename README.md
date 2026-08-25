@@ -1,4 +1,8 @@
 # Quantum Resource Management Interface (QRMI)
+<<<<<<< HEAD
+=======
+# Quantum Resource Management Interface (QRMI)
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 [![License](https://img.shields.io/github/license/qiskit-community/qrmi.svg?)](https://opensource.org/licenses/Apache-2.0) <!--- long-description-skip-begin -->
 [![Current Release](https://img.shields.io/github/release/qiskit-community/qrmi.svg?)](https://github.com/qiskit-community/qrmi/releases)
@@ -21,8 +25,15 @@
 > have changed accordingly. Legacy names remain supported until **November 21, 2026**. See the [migration guide](https://github.com/qiskit-community/qrmi/blob/main/docs/migration/0.23.0.md) for details.
 
 The *Quantum Resource Management Interface* (QRMI) is a vendor-agnostic library for high-performance compute (HPC) systems to access, control, and monitor the behavior of quantum computational resources. It acts as a thin middleware layer that abstracts away the complexities associated with controlling quantum resources through a set of simple APIs. Written in Rust, this interface also exposes Python and C APIs for ease of integration into nearly any computational environment.
+<<<<<<< HEAD
 
 The source code to build and deploy QRMI is available [here](https://github.com/qiskit-community/qrmi).
+=======
+The *Quantum Resource Management Interface* (QRMI) is a vendor-agnostic library for high-performance compute (HPC) systems to access, control, and monitor the behavior of quantum computational resources. It acts as a thin middleware layer that abstracts away the complexities associated with controlling quantum resources through a set of simple APIs. Written in Rust, this interface also exposes Python and C APIs for ease of integration into nearly any computational environment.
+
+The source code to build and deploy QRMI is available [here](https://github.com/qiskit-community/qrmi).
+The source code to build and deploy QRMI is available [here](https://github.com/qiskit-community/qrmi).
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 An optional `task_runner` command line tool to execute quantum payloads against quantum hardware is included in the Python package. For more information, read the documentation available [here](https://qiskit-community.github.io/qrmi/examples/task_runner/TASK_RUNNER.html#task-runner).
 
@@ -54,11 +65,22 @@ pip install "qrmi[ibm,pasqal]"
 
 > [!NOTE]
 > `ibm` and `iqm` extras cannot be installed together, as they depend on incompatible versions of Qiskit.
+<<<<<<< HEAD
 
 > [!NOTE]
 > `alice-bob` cannot be installed alongside `ibm` or `iqm`, as it depends on Qiskit versions earlier than 2.0.
 
 Pip will handle all dependencies automatically and you will always install the latest (and most thoroughly tested) version.
+=======
+> `ibm` and `iqm` extras cannot be installed together, as they depend on incompatible versions of Qiskit.
+
+> [!NOTE]
+> `alice-bob` cannot be installed alongside `ibm` or `iqm`, as it depends on Qiskit versions earlier than 2.0.
+> `alice-bob` cannot be installed alongside `ibm` or `iqm`, as it depends on Qiskit versions earlier than 2.0.
+
+Pip will handle all dependencies automatically and you will always install the latest (and most thoroughly tested) version.
+Pip will handle all dependencies automatically and you will always install the latest (and most thoroughly tested) version.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 To install from source, follow the instructions in the [documentation](https://qiskit-community.github.io/qrmi/getting_started/INSTALLATION.html).
 
@@ -73,14 +95,27 @@ To install from source, follow the instructions in the [documentation](https://q
 You can explore the full range of example code [here](https://qiskit-community.github.io/qrmi/examples/index.html). Each example directory includes a README containing more details.
 
 One example of QRMI usage in a compute infrastructure project is the Slurm plugin for quantum resources. QRMI is used in these Slurm plugins to control quantum resources during the lifecycle of a Slurm job. You can find full details of the implementation of Quantum SPANK plugins for Slurm [here](https://github.com/qiskit-community/spank-plugins).
+<<<<<<< HEAD
+=======
+One example of QRMI usage in a compute infrastructure project is the Slurm plugin for quantum resources. QRMI is used in these Slurm plugins to control quantum resources during the lifecycle of a Slurm job. You can find full details of the implementation of Quantum SPANK plugins for Slurm [here](https://github.com/qiskit-community/spank-plugins).
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 ## Citing QRMI
 
 QRMI is the work of [many people](https://github.com/qiskit-community/qrmi/graphs/contributors) who contribute
 to the project at different levels. If you use QRMI, please consider citing the associated overview paper, ["Quantum resources in resource management systems"](https://arxiv.org/abs/2506.10052). This helps support the continued development and visibility of the repository. The BibTeX citation handle can be found in the [BibTeX](CITATION.bib) file.
+<<<<<<< HEAD
 
 > [!NOTE]
 > We expect multiple versions of the overview paper to be released as the project evolves.
+=======
+to the project at different levels. If you use QRMI, please consider citing the associated overview paper, ["Quantum resources in resource management systems"](https://arxiv.org/abs/2506.10052). This helps support the continued development and visibility of the repository. The BibTeX citation handle can be found in the [BibTeX](CITATION.bib) file.
+
+> [!NOTE]
+> We expect multiple versions of the overview paper to be released as the project evolves.
+> [!NOTE]
+> We expect multiple versions of the overview paper to be released as the project evolves.
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 ## Contribution Guidelines
 
@@ -101,6 +136,12 @@ A list of frequently asked questions is maintained [here](https://qiskit-communi
 
 1. Quantum SPANK plugins for Slurm https://github.com/qiskit-community/spank-plugins
 2. Slurm Documentation https://slurm.schedmd.com/
+<<<<<<< HEAD
+=======
+
+1. Quantum SPANK plugins for Slurm https://github.com/qiskit-community/spank-plugins
+2. Slurm Documentation https://slurm.schedmd.com/
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 3. Qiskit https://www.ibm.com/quantum/qiskit
 4. IBM Quantum https://www.ibm.com/quantum
 5. Pasqal https://pasqal.com

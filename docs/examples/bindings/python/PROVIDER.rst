@@ -22,7 +22,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py311_qrmi_venv/bin/activate
    pip install qrmi[ibm]
@@ -37,7 +41,11 @@ Run `example.py`_:
 
 .. _example.py: https://github.com/qiskit-community/qrmi/blob/main/examples/qrmi/python/resource_providers/example.py
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    usage: example.py [-h] [--filters FILTERS] config_file resource_name
 
@@ -53,6 +61,10 @@ Run `example.py`_:
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python example.py /etc/slurm/qrmi_config.json ibm_inst1 --filters "num_qubits=127&max_shots=10000"

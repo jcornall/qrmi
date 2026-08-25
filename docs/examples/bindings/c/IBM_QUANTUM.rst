@@ -86,7 +86,11 @@ generate. You can customise quantum circuits by editing the code.
 How to build `this example`_
 ----------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    mkdir build
    cd build
@@ -97,14 +101,22 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ./build/quantum_system
    quantum_system <backend_name> <primitive input file> <program id>
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export test_eagle_QRMI_IBM_QS_ENDPOINT=http://localhost:8080
    export test_eagle_QRMI_IBM_QS_IAM_ENDPOINT=https://iam.cloud.ibm.com

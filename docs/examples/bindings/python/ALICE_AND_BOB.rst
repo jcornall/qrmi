@@ -22,7 +22,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install -r requirements.txt
 
@@ -69,7 +73,11 @@ You can optionally modify the Qiskit circuit in
 `generate_input_generic.py`_ before generating it in QIR form as
 follows:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export QRMI_AB_FELIS_BASE_ENDPOINT='<felis endpoint>'
    export QRMI_AB_FELIS_API_KEY='<your felis api key>'
@@ -86,7 +94,11 @@ like ``measure_x``. To do so:
 .. _qiskit-alice-bob-provider: https://github.com/Alice-Bob-SW/qiskit-alice-bob-provider
 .. _generate_input_generic.py: https://github.com/qiskit-community/qrmi/blob/main/examples/qrmi/python/alice_bob_felis/generate_input_generic.py
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cd examples/qrmi/python/alice_bob/
    python generate_input_generic.py > generated_circuit.ll
@@ -101,7 +113,11 @@ Run `example.py`_:
 
 .. _example.py: https://github.com/qiskit-community/qrmi/blob/main/examples/qrmi/python/alice_bob_felis/example.py
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    python example.py -h
    usage: example.py [-h] target qir_file
@@ -117,7 +133,11 @@ Run `example.py`_:
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export ab_emu_1q_lescanne_2020_QRMI_AB_FELIS_BASE_ENDPOINT='https://api.alice-bob.com/'
    export ab_emu_1q_lescanne_2020_QRMI_AB_FELIS_API_KEY='<your felis api key>'

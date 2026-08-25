@@ -64,7 +64,11 @@ and write it to a file like this:
 How to build `this example`_
 ----------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cargo clean
    cargo build --release --features=qrmi/munge
@@ -73,7 +77,11 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-pasqal-local --help
    QRMI for Pasqal Local - Example
@@ -88,6 +96,10 @@ How to run `this example`_
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-pasqal-local -b PASQAL_LOCAL -i input.json

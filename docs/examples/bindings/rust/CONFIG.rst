@@ -23,7 +23,11 @@ How to build `this example`_
 
 .. _this example: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/rust/qrmi_config
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cargo clean
    cargo build --release
@@ -32,7 +36,11 @@ How to build `this example`_
 How to run `this example`_
 --------------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-config --help
    Parsing qrmi_config.json file
@@ -46,6 +54,10 @@ How to run `this example`_
 
 For example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    ../target/release/qrmi-example-config -f /etc/slurm/qrmi_config.json

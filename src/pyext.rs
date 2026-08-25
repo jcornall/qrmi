@@ -15,6 +15,11 @@ use crate::error::{QrmiError, QrmiErrorKind};
 use crate::ibm::IBMQiskitRuntimeServiceProvider;
 use crate::ibm::IBMQuantumComputeServiceProvider;
 use crate::ibm::IBMQuantumSystemProvider;
+<<<<<<< HEAD
+=======
+use crate::ibm::{IBMQiskitRuntimeService, IBMQuantumComputeService, IBMQuantumSystem};
+use crate::iqm::IQMServer;
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 use crate::models::{Payload, ResourceDef, Target, TaskResult, TaskStatus};
 use crate::QuantumResource;
 use pyo3::prelude::*;
@@ -198,8 +203,59 @@ impl PyQuantumResource {
     #[new]
     pub fn new(resource_id: &str, resource_type: ResourceType) -> PyResult<Self> {
         crate::common::initialize();
+<<<<<<< HEAD
         let qrmi = crate::common::create_resource(&resource_type.into(), resource_id)
             .map_err(to_py_err)?;
+=======
+        let qrmi: Box<dyn QuantumResource + Send + Sync> = match resource_type {
+            ResourceType::IBMQuantumSystem => match IBMQuantumSystem::new(resource_id) {
+                Ok(v) => Box::new(v),
+                Err(e) => {
+                    return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                }
+            },
+            ResourceType::IBMQiskitRuntimeService => {
+                match IBMQiskitRuntimeService::new(resource_id) {
+                    Ok(v) => Box::new(v),
+                    Err(e) => {
+                        return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                    }
+                }
+            }
+            ResourceType::IBMQuantumComputeService => {
+                match IBMQuantumComputeService::new(resource_id) {
+                    Ok(v) => Box::new(v),
+                    Err(e) => {
+                        return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                    }
+                }
+            }
+            ResourceType::PasqalCloud => match PasqalCloud::new(resource_id) {
+                Ok(v) => Box::new(v),
+                Err(e) => {
+                    return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                }
+            },
+            ResourceType::PasqalLocal => match PasqalLocal::new(resource_id) {
+                Ok(v) => Box::new(v),
+                Err(e) => {
+                    return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                }
+            },
+            ResourceType::AliceBobFelis => match AliceBobFelis::new(resource_id) {
+                Ok(v) => Box::new(v),
+                Err(e) => {
+                    return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                }
+            },
+            ResourceType::IQMServer => match IQMServer::new(resource_id) {
+                Ok(v) => Box::new(v),
+                Err(e) => {
+                    return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string()));
+                }
+            },
+        };
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
         Ok(Self {
             qrmi,
@@ -407,6 +463,7 @@ impl PyResourceDef {
 ///
 ///     from qrmi import Config, ResourceProvider, ResourceType
 ///
+<<<<<<< HEAD
 ///     config = Config.load("/path/to/qrmi_config.json")
 ///     resource_def = config.resource_map["ibm_inst1"]
 ///
@@ -417,6 +474,12 @@ impl PyResourceDef {
 ///
 ///     for r in resources:
 ///         print(r.resource_id())
+=======
+/// provider = ResourceProvider(ResourceType.IBMQuantumComputeService, resource_def.environment)
+/// resources = provider.resources()
+/// resources = provider.resources("num_qubits=127&name=ibm_*&status=online")
+/// resource  = provider.least_busy()
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 ///
 #[gen_stub_pyclass]
 #[pyclass]
@@ -445,9 +508,15 @@ impl PyResourceProvider {
     /// Constructs a new provider from a resource type and environment variable map.
     ///
     /// Currently supported resource types:
+<<<<<<< HEAD
     /// - ``ResourceType.IBMQiskitRuntimeService``(deprecated)
     /// - ``ResourceType.IBMQuantumComputeService``
     /// - ``ResourceType.IBMQuantumSystem``
+=======
+    /// - `ResourceType.IBMQiskitRuntimeService`(deprecated)
+    /// - `ResourceType.IBMQuantumComputeService`
+    /// - `ResourceType.IBMQuantumSystem`
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
     #[new]
     pub fn new(
         resource_type: ResourceType,
@@ -465,6 +534,12 @@ impl PyResourceProvider {
                 match IBMQuantumComputeServiceProvider::new(&environment) {
                     Ok(p) => Box::new(p),
                     Err(e) => return Err(to_py_err(e)),
+                }
+            }
+            ResourceType::IBMQuantumComputeService => {
+                match IBMQuantumComputeServiceProvider::new(&environment) {
+                    Ok(p) => Box::new(p),
+                    Err(e) => return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string())),
                 }
             }
             ResourceType::IBMQuantumSystem => match IBMQuantumSystemProvider::new(&environment) {

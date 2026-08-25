@@ -24,7 +24,11 @@ Prerequisites
 Install dependencies
 --------------------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pip install -f requirements.txt
 
@@ -42,7 +46,11 @@ provided by IQM.
 
 Usage:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    usage: gen_iqm_json.py [-h] qc_alias base_url token
 

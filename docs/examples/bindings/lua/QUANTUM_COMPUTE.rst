@@ -22,14 +22,22 @@ Prerequisites
 Setup
 -----
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export LUA_CPATH="</path/to/qrmi.so-dir/>?.so;;"
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/path/to/libqrmi.so-dir
 
 Example:
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export LUA_CPATH="/shared/qrmi/lua/build/?.so;;"
    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/shared/qrmi/target/release
@@ -96,7 +104,11 @@ How to build `this example`_
 
 .. _this  example: https://github.com/qiskit-community/qrmi/tree/main/examples/qrmi/lua/ibm
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    $ mkdir build
    $ cd build
@@ -111,13 +123,21 @@ Run `example.lua`_:
 
 .. _example.lua: https://github.com/qiskit-community/qrmi/blob/main/examples/qrmi/lua/ibm/example.lua
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    lua example.lua <backend_name> <resource_type> <program type> <input filename>
 
 For example:
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    export ibm_torino_QRMI_IBM_QCS_ENDPOINT=https://quantum.cloud.ibm.com/api/v1
    export ibm_torino_QRMI_IBM_QCS_IAM_ENDPOINT=https://iam.cloud.ibm.com

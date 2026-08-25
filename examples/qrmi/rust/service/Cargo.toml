@@ -1,7 +1,13 @@
 [package]
+<<<<<<<< HEAD:examples/qrmi/rust/service/Cargo.toml
 name = "qrmi-example-service"
 version = "0.1.0"
 edition = "2021"
+========
+name = "qrmi-example-ibm-quantum-compute-service"
+version = "0.1.0"
+edition = "2026"
+>>>>>>>> 5cc446c (Merge sphinx integration (#5)):examples/qrmi/rust/ibm_quantum_compute_service/Cargo.toml
 license = "Apache-2.0"
 repository = "https://github.com/qiskit-community/qrmi"
 rust-version = "1.86" # Keep in sync with docs/client/*.md and rust-toolchain.toml.

@@ -46,7 +46,11 @@ Prerequisites
 How to run
 ----------
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py312_qrmi_venv/bin/activate
    task_runner -h
@@ -123,7 +127,11 @@ IBM Quantum System or Quantum Compute Service
 
 Run estimator primitive on ibm_marrakesh.
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    #!/bin/bash
 
@@ -142,7 +150,11 @@ Pasqal Cloud
 Run Pulser sequence on FRESNEL. This sequence can also be generated via
 the Qiskit Pasqal Provider, as shown in the examples.
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    #!/bin/bash
 
@@ -210,7 +222,11 @@ IBM Quantum System
 
 Example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py312_qrmi_venv/bin/activate
 
@@ -263,7 +279,11 @@ Quantum Compute Service
 
 Example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py312_qrmi_venv/bin/activate
 
@@ -328,7 +348,11 @@ Example:
 
 Example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py312_qrmi_venv/bin/activate
 
@@ -354,7 +378,11 @@ Environment variables                           Descriptions
 
 Example:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    source ~/py312_qrmi_venv/bin/activate
 

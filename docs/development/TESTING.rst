@@ -1,7 +1,12 @@
 .. _testing:
 
+<<<<<<< HEAD
 Testing
 =======
+=======
+Testing QRMI
+============
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 .. rst-class:: lead
 
@@ -91,7 +96,11 @@ Running Rust Tests
 
 Rust built-in test framework can be executed using the ``cargo test`` command in the terminal:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    cargo test
 
@@ -134,19 +143,32 @@ Following these principles allows for:
 -  Local ``conftest.py`` files per submodule when needed.
 -  Vendor-specific utilities without cross-contamination.
 
+<<<<<<< HEAD
 .. Python Integration Tests
 .. ~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. .. -  May require network access, services, or real backends.
 
 .. TBD
+=======
+Python Integration Tests
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. -  May require network access, services, or real backends.
+
+TBD
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
 Running Python Tests
 ~~~~~~~~~~~~~~~~~~~~
 
 Python tests can be executed using the ``pytest`` command in the terminal:
 
+<<<<<<< HEAD
 .. code-block:: bash
+=======
+.. code-block:: shell-session
+>>>>>>> 5cc446c (Merge sphinx integration (#5))
 
    pytest
 
