@@ -25,7 +25,7 @@ When run as a job in a Slurm cluster, these environment variables are set by the
 | Environment variables | Descriptions |
 | ---- | ---- |
 | QRMI_JOB_QPU_RESOURCES | Quantum resource names. Comma-separated values, e.g. `ibm_torino,ibm_brisbane` |
-| QRMI_JOB_QPU_TYPES | Quantum resource types. Comma-separated values corresponding to each Quantum resource name specified by `QRMI_JOB_QPU_RESOURCES`.<br><br>Supported types:<ul><li>`ibm-quantum-system`</li><li>`qiskit-runtime-service`</li></ul> |
+| QRMI_JOB_QPU_TYPES | Quantum resource types. Comma-separated values corresponding to each Quantum resource name specified by `QRMI_JOB_QPU_RESOURCES`.<br><br>Supported types:<ul><li>`ibm-quantum-system`</li><li>`ibm-quantum-compute-service`</li><li>`qiskit-runtime-service`(deprecated)</li></ul> |
 
 ### IBM Quantum System specific
 
@@ -66,7 +66,7 @@ When run as a job in a Slurm cluster, these environment variables are set by use
 
 | Environment variables | Descriptions |
 | ---- | ---- |
-| {resource_name}_QRMI_IBM_QRS_ENDPOINT | Qiskit Runtime Service endpoint URL(e.g. `https://quantum.cloud.ibm.com/api`) |
+| {resource_name}_QRMI_IBM_QRS_ENDPOINT | Quantum Compute Service endpoint URL(e.g. `https://quantum.cloud.ibm.com/api`) |
 | {resource_name}_QRMI_IBM_QRS_IAM_ENDPOINT | IBM Cloud IAM endpoint URL(e.g. `https://iam.cloud.ibm.com`) |
 | {resource_name}_QRMI_IBM_QRS_IAM_APIKEY | IBM Cloud IAM API Key |
 | {resource_name}_QRMI_IBM_QRS_SERVICE_CRN | Cloud Resource Name(CRN) of the provisioned Quantum System instance, starting with `crn:v1:`. |

@@ -23,11 +23,12 @@ use async_trait::async_trait;
 use futures::future::join_all;
 use log::warn;
 use provider_filter::BackendFilter;
-use qiskit_runtime_client::apis::{auth, backends_api, configuration};
+use quantum_compute_client::apis::{auth, backends_api, configuration};
 use std::collections::HashMap;
 use std::env;
 
-/// A [`ResourceProvider`] that discovers backends available through IBM Qiskit Runtime Service.
+/// A [`ResourceProvider`] that discovers backends available through IBM Qiskit Runtime
+/// Service(deprecated).
 ///
 /// Constructed from a [`ResourceDef`] with `is_dynamic: true`.
 ///

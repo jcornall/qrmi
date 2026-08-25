@@ -1,6 +1,6 @@
 // This code is part of Qiskit.
 //
-// Copyright (C): 2025 UKRI-STFC (Hartree Centre)
+// Copyright (C): 2025-2026 UKRI-STFC (Hartree Centre)
 //
 // This code is licensed under the Apache License, Version 2.0. You may
 // obtain a copy of this license in the LICENSE.txt file in the root directory
@@ -29,10 +29,11 @@ use crate::models::{Payload, ResourceType, Target, TaskResult, TaskStatus};
 use crate::QuantumResource;
 use anyhow::{anyhow, bail, Result};
 use log::error;
-use qiskit_runtime_client::apis::{auth, backends_api, configuration, jobs_api, sessions_api};
-use qiskit_runtime_client::models;
-use qiskit_runtime_client::models::create_job_request_one_of::LogLevel;
-use qiskit_runtime_client::models::create_session_request_one_of::Mode;
+use quantum_compute_client::apis::{auth, backends_api, configuration, jobs_api, sessions_api};
+use quantum_compute_client::models;
+use quantum_compute_client::models::create_job_request_one_of::LogLevel;
+use quantum_compute_client::models::create_session_request_one_of::Mode;
+
 use serde_json::{json, Value};
 use std::collections::HashMap;
 use std::env;
