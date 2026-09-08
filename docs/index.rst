@@ -200,6 +200,7 @@ References and Acknowledgements
    development/CONTRIBUTING
    development/TESTING
    development/DOCUMENTATION
+   development/RELEASE_DEPLOYMENT
    development/RUST_API
    development/PYTHON_API
    development/C_API

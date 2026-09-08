@@ -507,34 +507,11 @@ Contributors must run the below commands to fix any formatting issues prior to s
 .. _contributing_release:
 
 
-Updating files for new release
-------------------------------
+Preparing a new release
+-----------------------
 
-To create a new release, the following files must be updated:
-
--  ``Cargo.toml``
-
-.. code-block:: toml
-
-     [package]
-     name = "qrmi"
-     version = "0.14.1"
-
--  ``Cargo.lock``
-
-.. code-block:: toml
-
-     [[package]]
-     name = "qrmi"
-     version = "0.14.1"
-
--  ``cbindgen.toml``
-
-.. code-block:: toml
-
-     #define QRMI_VERSION_MAJOR 0
-     #define QRMI_VERSION_MINOR 14
-     #define QRMI_VERSION_PATCH 1
+Certain files will need to be updated for a new release. Please
+refer to :ref:`release_deployment` for in-depth guidance on preparing a new release.
 
 
 Help and Support
