@@ -405,8 +405,12 @@ enable the ``munge`` feature during the build process.
 .. code-block:: shell-session
 
    source ~/py312_qrmi_venv/bin/activate
+<<<<<<< HEAD
    CARGO_TARGET_DIR=./target/release/maturin maturin build --release --features pyo3/extension-module,munge,pyo3/abi3,qrmi/pyo3
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+   CARGO_TARGET_DIR=./target/release/maturin maturin build --release --features munge,pyo3/abi3,qrmi/pyo3
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
 
 Further Resources
@@ -430,9 +434,12 @@ during the lifecycle of a Slurm job. You can find full details on implementing t
 .. _here: https://github.com/qiskit-community/spank-plugins
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 The Slurm plugin for quantum resources is only one example of QRMI's workload manager integrations. More information about QRMI's 
 integrations is available in our :ref:`Quantum-HPC Integration paper <qrmi_integrations>`.
 
@@ -471,10 +478,14 @@ API Documentation
 ~~~~~~~~~~~~~~~~~
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 Links to the Python, Rust, C and Lua API documentation are available here:
 =======
 Links to the Python, Rust, C and Lua API documentation is available here:
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+Links to the Python, Rust, C and Lua API documentation are available here:
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
 -  :ref:`rust_api`
 -  :ref:`python_api`

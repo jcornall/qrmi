@@ -52,10 +52,14 @@ Environment variables                     Descriptions
 ========================================= =======================
 ``{qc_alias_name}_QRMI_IQM_ISA_ENDPOINT`` IQM Server API endpoint
 <<<<<<< HEAD
+<<<<<<< HEAD
 ``{qc_alias_name}_QRMI_IQM_ISA_TOKEN``    IQM Server API token
 =======
 ``{qc_alias_name}_QRMI_IBM_ISA_TOKEN``    IQM Server API token
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+``{qc_alias_name}_QRMI_IQM_ISA_TOKEN``    IQM Server API token
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 ========================================= =======================
 
 .. note::

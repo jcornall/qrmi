@@ -24,8 +24,12 @@ Migration Guides
     :maxdepth: 2
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     v0.24.0
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+    v0.24.0
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
     v0.23.0
     v0.13.0

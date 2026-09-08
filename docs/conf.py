@@ -86,11 +86,14 @@ linkcheck_ignore = [
     r"https://github.com/Qiskit/ibm-quantum-schemas/.*",
     r"https://resonance.iqm.tech/",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     # r"https://qisk.it/.*",
     # r"https://github.com/.*/tree/.*",
     # r"https://github.com/.*/blob/.*",
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 ]
 
 # Optional but recommended

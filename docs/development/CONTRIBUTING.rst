@@ -25,6 +25,7 @@ Outlines the process for contributing code, documentation, tests, and other impr
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_prereq:
 
+
 Prerequisites
 -------------
 
@@ -142,6 +143,7 @@ Once the forked repository is set up, you can clone it to your local machine and
 =======
 .. _contributing_cla:
 
+
 Contributor Licensing Agreement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -168,15 +170,20 @@ The `Individual CLA`_ document is available for review as a PDF.
    Please email this to us at qiskit@us.ibm.com.
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 
+
 Setting up the developer environment
 ------------------------------------
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 .. _contributing_venv:
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Create a virtual environment
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -268,6 +275,7 @@ Refer to :ref:`install`.
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_issues:
 
+
 Issues and pull requests
 ------------------------
 
@@ -310,6 +318,7 @@ more likely to be reviewed and merged in a timely manner.
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _pull_request_checklist:
+
 
 Pull request checklist
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -354,9 +363,13 @@ When submitting a pull request for review, please ensure that:
    - You must use the **exact phrasing** for GitHub to automatically close the issue when the PR merges.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Pre-commit ``detect-secrets``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -370,9 +383,13 @@ workflow using the following instructions:
    Before you begin, ensure you have a **Python virtual environment** (i.e. ``venv``) active. You will need to install ``pre-commit``, which manages the hooks that run ``detect-secrets`` automatically.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Installing ``pre-commit``
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -398,6 +415,7 @@ The baseline records known false positives so future scans focus on newly introd
 This file maximises the detection coverage.
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 
+
 Handling false positives
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -412,9 +430,13 @@ Once updated, include the modified .secrets.baseline in your PR to ensure the pr
    detect-secrets audit .secrets.baseline
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Manual execution and overrides
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -426,9 +448,13 @@ execute the following command:
    pre-commit run --all-files
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Bypassing the hook
 ^^^^^^^^^^^^^^^^^^
 
@@ -444,9 +470,13 @@ If you must force a commit without running the pre-commit checks
    git commit -m "Your message" --no-verify
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Code Review
 ~~~~~~~~~~~
 
@@ -471,6 +501,7 @@ Please also make sure to always be kind and respectful in your interactions with
 maintainers and other contributors, in line with the :ref:`QRMI Code of Conduct <code_of_conduct>`.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .. _contributing_docs:
 
@@ -485,6 +516,9 @@ Refer to :ref:`adding_documentation` for further guidance.
 
 
 =======
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Documentation
 -------------
 
@@ -493,6 +527,7 @@ Refer to :ref:`adding_documentation` for further guidance.
 
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
 .. _contributing_testing:
+
 
 Testing
 -------
@@ -503,6 +538,7 @@ you open a new pull request for your change, run QRMI's Python test suite. If yo
 modified native code, you should also run its Rust-based unit tests.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 More information about QRMI's testing suite is available in our :ref:`testing documentation <testing>`.
 
 
@@ -510,6 +546,9 @@ More information about QRMI's testing suite is available in our :ref:`testing do
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Running unit tests
 ~~~~~~~~~~~~~~~~~~
 
@@ -565,9 +604,13 @@ Running unit tests
       environment variable.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 .. Unsafe code and Miri
 .. ~~~~~~~~~~~~~~~~~~~~
 
@@ -599,6 +642,7 @@ Running unit tests
 .. .. _miri.yml: https://github.com/Qiskit/qiskit/blob/main/.github/workflows/miri.yml
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 .. Testing the C API
 .. ~~~~~~~~~~~~~~~~~
@@ -612,10 +656,14 @@ Running unit tests
 .. TBD
 
 =======
+=======
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 Testing the C API
 ~~~~~~~~~~~~~~~~~
 
 TBD
+
 
 Writing C API tests
 ^^^^^^^^^^^^^^^^^^^
@@ -625,18 +673,25 @@ TBD
 
 .. _contributing_style:
 
+
 Style and linting
 -----------------
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 Contributors must run the below commands to fix and verify any formatting issues prior to submitting a PR:
 
 =======
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+Contributors must run the below commands to fix any formatting issues prior to submitting a PR.
+
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 .. tabs::
 
    .. tab:: Rust
 
+<<<<<<< HEAD
 <<<<<<< HEAD
       Fix any formatting issues:
 
@@ -650,6 +705,9 @@ Contributors must run the below commands to fix and verify any formatting issues
          cargo clippy --all-targets -- -D warnings
 =======
       Execute the following commands to fix any formatting issues before submitting a PR.
+=======
+      Execute the following commands:
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
       .. code-block:: shell-session
 
@@ -681,11 +739,15 @@ Contributors must run the below commands to fix and verify any formatting issues
    .. tab:: Python
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       Execute the following commands:
 
       .. code-block:: bash
 =======
       Execute the following commands to fix any formatting issues before submitting a PR.
+=======
+      Execute the following commands:
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
       .. code-block:: shell-session
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
@@ -720,13 +782,14 @@ refer to our :ref:`release and deploymeny guide <release_deployment>` for guidan
 =======
 .. _contributing_release:
 
-Updating files for new release
-------------------------------
 
-To create a new release, the following files must be updated:
+Preparing a new release
+-----------------------
 
--  ``Cargo.toml``
+Certain files will need to be updated for a new release. Please
+refer to :ref:`release_deployment` for in-depth guidance on preparing a new release.
 
+<<<<<<< HEAD
 .. code-block:: toml
 
      [package]
@@ -749,6 +812,8 @@ To create a new release, the following files must be updated:
      #define QRMI_VERSION_MINOR 14
      #define QRMI_VERSION_PATCH 1
 >>>>>>> 5cc446c (Merge sphinx integration (#5))
+=======
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
 Help and Support
 ----------------

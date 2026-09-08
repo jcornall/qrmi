@@ -1,7 +1,12 @@
 .. _release_deployment:
 
+<<<<<<< HEAD
 Release & Deployment
 ====================
+=======
+Release and Deployment
+======================
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
 .. rst-class:: lead
 
@@ -59,7 +64,11 @@ any binary that links it), so you can check it without running the code.
 Using ``strings``
 ^^^^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
    $ strings /path/to/libqrmi.so | grep QRMI_BUILD_VERSION
    QRMI_BUILD_VERSION:0.24.0;QRMI_GIT_HASH:0dac1793b013
@@ -67,7 +76,11 @@ Using ``strings``
 Using ``readelf``
 ^^^^^^^^^^^^^^^^^
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
    $ readelf -p .version_info /path/to/libqrmi.so
 
@@ -113,7 +126,11 @@ If you're looking at ``spank_qrmi.so`` specifically
 ``spank_qrmi.so`` embeds its own version/git-hash marker alongside
 QRMI's, in the same ``.version_info`` section:
 
+<<<<<<< HEAD
 .. code:: bash
+=======
+.. code:: shell-session
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 
    $ strings /path/to/spank_qrmi.so | grep -E "SPANK_QRMI|QRMI_BUILD"
    SPANK_QRMI_BUILD_VERSION=0.11.0;SPANK_QRMI_GIT_HASH=0dac1793b013

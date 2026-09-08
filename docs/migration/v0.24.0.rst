@@ -94,7 +94,12 @@ On top of the mechanism itself being new, four conditions in particular
 are now classified with their own variant, across all three languages:
 
 +-----------------+----------------------------------+-------------------------------------+-------------------------------+
+<<<<<<< HEAD
 |     Meaning     |       Rust (``QrmiError``)       |       C (``QrmiReturnCode``)        |      Python (``qrmi.*``)      |
+=======
+|     Meaning     |               Rust               |                  C                  |            Python             |
+|                 |         (``QrmiError``)          |        (``QrmiReturnCode``)         |         (``qrmi.*``)          |
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
 +=================+==================================+=====================================+===============================+
 | A named         | ``ResourceNotFound(String)``     | ``ResourceNotFoundError`` (111)     | ``ResourceNotFoundError``     |
 | resource        |                                  |                                     |                               |

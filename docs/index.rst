@@ -265,10 +265,14 @@ References and Acknowledgements
    development/TESTING
    development/DOCUMENTATION
 <<<<<<< HEAD
+<<<<<<< HEAD
    development/RELEASE_DEPLOYMENT
    Contributor Licensing Agreement <development/CLA>
    development/api_references/index
 =======
+=======
+   development/RELEASE_DEPLOYMENT
+>>>>>>> c4d5900 (Merge sphinx integration (#6))
    development/RUST_API
    development/PYTHON_API
    development/C_API
