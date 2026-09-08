@@ -466,6 +466,12 @@ impl PyResourceProvider {
                     Err(e) => return Err(to_py_err(e)),
                 }
             }
+            ResourceType::IBMQuantumComputeService => {
+                match IBMQuantumComputeServiceProvider::new(&environment) {
+                    Ok(p) => Box::new(p),
+                    Err(e) => return Err(pyo3::exceptions::PyRuntimeError::new_err(e.to_string())),
+                }
+            }
             ResourceType::IBMQuantumSystem => match IBMQuantumSystemProvider::new(&environment) {
                 Ok(p) => Box::new(p),
                 Err(e) => return Err(to_py_err(e)),

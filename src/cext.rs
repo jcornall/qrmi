@@ -1735,6 +1735,15 @@ pub unsafe extern "C" fn qrmi_provider_new(
                 }
             }
         }
+        ResourceType::IBMQuantumComputeService => {
+            match IBMQuantumComputeServiceProvider::new(&env_map) {
+                Ok(inner) => Box::new(inner),
+                Err(err) => {
+                    _set_last_error(format!("{:?}", err));
+                    return std::ptr::null_mut();
+                }
+            }
+        }
         ResourceType::IBMQuantumSystem => match IBMQuantumSystemProvider::new(&env_map) {
             Ok(inner) => Box::new(inner),
             Err(err) => {
