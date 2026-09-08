@@ -10,9 +10,10 @@
 // copyright notice, and modified files need to carry a notice indicating
 // that they have been altered from the originals.
 
+use crate::error::{required_env, QrmiError};
+use crate::iqm::error::{classify, ResourceKind};
 use crate::models::{Payload, ResourceType, Target, TaskResult, TaskStatus};
-use crate::QuantumResource;
-use anyhow::{anyhow, bail, Context, Result};
+use crate::{QuantumResource, Result};
 use async_trait::async_trait;
 use iqm_server_api::apis::calibration_sets_api::{
     get_calibration_set_v1, get_dynamic_quantum_architecture_v1, get_quality_metrics_v1,
@@ -25,7 +26,6 @@ use serde_json::{json, Value};
 use std::collections::HashMap;
 use std::env;
 use std::fmt::Write;
-use uuid::Uuid;
 
 /// QRMI implementation for IQM Server API
 pub struct IQMServer {
@@ -50,13 +50,8 @@ impl IQMServer {
             _ => unreachable!("buf should never be empty due to split()"),
         };
 
-        let iqm_endpoint =
-            env::var(format!("{backend_name}_QRMI_IQM_ISA_ENDPOINT")).map_err(|_| {
-                anyhow!("{backend_name}_QRMI_IQM_ISA_ENDPOINT environment variable is not set")
-            })?;
-        let iqm_token = env::var(format!("{backend_name}_QRMI_IQM_ISA_TOKEN")).map_err(|_| {
-            anyhow!("{backend_name}_QRMI_IQM_ISA_TOKEN environment variable is not set")
-        })?;
+        let iqm_endpoint = required_env(format!("{backend_name}_QRMI_IQM_ISA_ENDPOINT"))?;
+        let iqm_token = required_env(format!("{backend_name}_QRMI_IQM_ISA_TOKEN"))?;
         let acquisition_token = env::var(format!("{backend_name}_QRMI_JOB_ACQUISITION_TOKEN")).ok();
         // Set up the config
         let mut config = configuration::Configuration::new();
@@ -91,21 +86,20 @@ impl IQMServer {
     /// being folded into the same `null`.
     fn parse_optional_artifact<B, E>(
         result: std::result::Result<B, iqm_server_api::apis::Error<E>>,
-        artifact_type: &str,
+        resource_kind: ResourceKind,
     ) -> Result<Value>
     where
         B: AsRef<[u8]>,
         E: std::fmt::Debug + Send + Sync + 'static,
     {
         match result {
-            Ok(bytes) => serde_json::from_slice::<Value>(bytes.as_ref())
-                .with_context(|| format!("'{artifact_type}' artifact is not valid JSON")),
+            Ok(bytes) => Ok(serde_json::from_slice::<Value>(bytes.as_ref())?),
             Err(iqm_server_api::apis::Error::ResponseError(resp))
                 if resp.status.as_u16() == 404 =>
             {
                 Ok(Value::Null)
             }
-            Err(e) => Err(e).with_context(|| format!("Failed to fetch '{artifact_type}'")),
+            Err(e) => Err(classify(e, resource_kind)),
         }
     }
 }
@@ -123,25 +117,10 @@ impl QuantumResource for IQMServer {
 
     /// Asynchronously checks if a backend is accessible.
     async fn is_accessible(&mut self) -> Result<bool> {
-        match get_qc_health_v1(&self.config, &self.backend_name).await {
-            Ok(health) => Ok(health.healthy),
-            Err(err) => {
-                bail!(format!("Failed to get backend details: {:#?}", &err));
-            }
-        }
-    }
-
-    /// IQM Server has no session concept. This does not contact the
-    /// provider; it returns a generated id so callers written against the
-    /// trait do not need a special case for this backend.
-    async fn acquire(&mut self) -> Result<String> {
-        Ok(Uuid::new_v4().to_string())
-    }
-
-    /// IQM Server has no session concept, so this is a no-op: nothing is
-    /// contacted and nothing is released. See `acquire()`.
-    async fn release(&mut self, _acquisition_token: &str) -> Result<()> {
-        Ok(())
+        let health = get_qc_health_v1(&self.config, &self.backend_name)
+            .await
+            .map_err(|e| classify(e, ResourceKind::Backend))?;
+        Ok(health.operational == "online" && health.health.healthy)
     }
 
     /// Starts a job task.
@@ -155,7 +134,7 @@ impl QuantumResource for IQMServer {
         } = payload
         {
             let job: serde_json::Value = serde_json::from_str(iqmjson.as_str())?;
-            match job_submit(
+            let job = job_submit(
                 &self.config,
                 &self.backend_name,
                 &job_type,
@@ -164,32 +143,49 @@ impl QuantumResource for IQMServer {
                 Some(job),
             )
             .await
-            {
-                Ok(val) => Ok(val.id.to_string()),
-                Err(err) => {
-                    bail!("An error occurred during starting a task: {:#?}", err);
-                }
-            }
+            .map_err(|e| classify(e, ResourceKind::Backend))?;
+            Ok(job.id.to_string())
         } else {
-            bail!(format!("Payload type is not supported. {:?}", payload));
+            Err(QrmiError::UnsupportedPayload(format!("{payload:?}")))
         }
     }
 
     /// Stops a running job.
     ///
+    /// Fetches the job's current status first, and only actually asks the
+    /// server to cancel it if that status is `Waiting` or `Processing` --
+    /// a job already in a terminal state (`Completed`/`Failed`/`Cancelled`)
+    /// can't be cancelled again, and the server rejects that with 403
+    /// (`IllegalJobStatus`, see `crate::iqm::error`'s docs on why that
+    /// status isn't otherwise classified). Mirrors
+    /// `crate::ibm::quantum_compute_service::QuantumComputeService::task_stop`'s
+    /// same guard for the same reason.
+    ///
+    /// The cancel call's own result is deliberately discarded, same as
+    /// that implementation: even after checking, the job could still
+    /// finish on its own in the moment between the status check and this
+    /// call, and that race isn't an error worth surfacing to the caller.
     async fn task_stop(&mut self, task_id: &str) -> Result<()> {
-        match cancel_job_v1(&self.config, task_id).await {
-            Ok(_job) => Ok(()),
-            Err(err) => {
-                bail!(format!("Failed to cancel a job({}): {:#?}", task_id, &err));
-            }
+        let job = get_job_v1(&self.config, task_id, Some(true), Some(30))
+            .await
+            .map_err(|e| classify(e, ResourceKind::Job))?;
+        if matches!(
+            job.status,
+            IqmServerJobStatus::Waiting | IqmServerJobStatus::Processing
+        ) {
+            cancel_job_v1(&self.config, task_id)
+                .await
+                .map_err(|e| classify(e, ResourceKind::Job))?;
         }
+        Ok(())
     }
 
     /// Returns the current status of a job.
     ///
     async fn task_status(&mut self, task_id: &str) -> Result<TaskStatus> {
-        let job = get_job_v1(&self.config, task_id, Some(true), Some(30)).await?;
+        let job = get_job_v1(&self.config, task_id, Some(true), Some(30))
+            .await
+            .map_err(|e| classify(e, ResourceKind::Job))?;
         match job.status {
             IqmServerJobStatus::Waiting => Ok(TaskStatus::Queued),
             IqmServerJobStatus::Processing => Ok(TaskStatus::Running),
@@ -213,29 +209,28 @@ impl QuantumResource for IQMServer {
     async fn task_result(&mut self, task_id: &str) -> Result<TaskResult> {
         let measurements = Self::parse_optional_artifact(
             job_get_artifacts(&self.config, task_id, "measurements").await,
-            "measurements",
-        )
-        .context("Failed to get 'measurements' artifact")?;
+            ResourceKind::Job,
+        )?;
         let measurement_counts = Self::parse_optional_artifact(
             job_get_artifacts(&self.config, task_id, "measurement_counts").await,
-            "measurement_counts",
-        )
-        .context("Failed to get 'measurement_counts' artifact")?;
+            ResourceKind::Job,
+        )?;
 
         let result = json!({
             "measurements": measurements,
             "measurement_counts": measurement_counts,
         });
 
-        let result_str =
-            serde_json::to_string_pretty(&result).context("Failed to serialize result")?;
+        let result_str = serde_json::to_string_pretty(&result)?;
         Ok(TaskResult { value: result_str })
     }
 
     /// Returns the log messages of the task.
     ///
     async fn task_logs(&mut self, task_id: &str) -> Result<String> {
-        let job = get_job_v1(&self.config, task_id, Some(true), Some(30)).await?;
+        let job = get_job_v1(&self.config, task_id, Some(true), Some(30))
+            .await
+            .map_err(|e| classify(e, ResourceKind::Job))?;
         let mut log = String::new();
         writeln!(log, "Timeline   :").unwrap();
         for event in &job.timeline {
@@ -281,24 +276,21 @@ impl QuantumResource for IQMServer {
             &self.calibration_set_id,
         )
         .await
-        .context("Failed to get dynamic_quantum_architecture")?;
+        .map_err(|e| classify(e, ResourceKind::Backend))?;
         let dynamic_quantum_architecture: serde_json::Value =
-            serde_json::from_slice(&dynamic_quantum_architecture)
-                .context("Failed to parse dynamic_quantum_architecture")?;
+            serde_json::from_slice(&dynamic_quantum_architecture)?;
 
         let calibration_set =
             get_calibration_set_v1(&self.config, &self.backend_name, &self.calibration_set_id)
                 .await
-                .context("Failed to get calibration_set")?;
-        let calibration_set: serde_json::Value =
-            serde_json::from_slice(&calibration_set).context("Failed to parse calibration_set")?;
+                .map_err(|e| classify(e, ResourceKind::Backend))?;
+        let calibration_set: serde_json::Value = serde_json::from_slice(&calibration_set)?;
 
         let quality_metrics =
             get_quality_metrics_v1(&self.config, &self.backend_name, &self.calibration_set_id)
                 .await
-                .context("Failed to get quality_metrics")?;
-        let quality_metrics: serde_json::Value =
-            serde_json::from_slice(&quality_metrics).context("Failed to parse quality_metrics")?;
+                .map_err(|e| classify(e, ResourceKind::Backend))?;
+        let quality_metrics: serde_json::Value = serde_json::from_slice(&quality_metrics)?;
 
         // Static, calibration-independent topology. Unlike the three
         // fields above, its absence (404) is expected on some Station
@@ -310,9 +302,8 @@ impl QuantumResource for IQMServer {
                 "static-quantum-architectures",
             )
             .await,
-            "static_quantum_architecture",
-        )
-        .context("Failed to get static_quantum_architecture")?;
+            ResourceKind::Backend,
+        )?;
 
         let resp = json!({
             "dynamic_quantum_architecture": dynamic_quantum_architecture,
